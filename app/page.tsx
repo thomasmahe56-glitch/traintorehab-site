@@ -697,7 +697,7 @@ export default function HomePage() {
       </section>
 
       {/* À PROPOS */}
-      <section className="about">
+      <section className="about" id="a-propos">
         <div className="about-photo reveal-left">
           <div className="about-photo-inner">
             <div className="about-initials">TM</div>
