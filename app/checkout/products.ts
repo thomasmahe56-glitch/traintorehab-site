@@ -15,10 +15,13 @@ export const PRODUCTS = {
       'Accès direct à Thomas — pas une équipe',
     ],
     parent: { label: 'Coaching', href: '/coaching' },
+    confirmationPath: '/confirmrestart',
     notice: 'Sans engagement · Résiliable à tout moment · Confirmation par email',
     plans: [
       {
         id: 'monthly',
+        mode: 'subscription',
+        stripePriceEnv: 'STRIPE_PRICE_RESTART_MONTHLY',
         label: 'Mensuel',
         detail: 'Résiliable à tout moment',
         price: '199€',
@@ -44,10 +47,13 @@ export const PRODUCTS = {
       'Sans suivi coach direct',
     ],
     parent: { label: 'Coaching', href: '/coaching' },
+    confirmationPath: '/confirmauto',
     notice: 'Sans engagement · Résiliable à tout moment · Confirmation par email',
     plans: [
       {
         id: 'monthly',
+        mode: 'subscription',
+        stripePriceEnv: 'STRIPE_PRICE_PERFORM_AUTONOME_MONTHLY',
         label: 'Mensuel',
         detail: 'Résiliable à tout moment',
         price: '89€',
@@ -57,6 +63,8 @@ export const PRODUCTS = {
       },
       {
         id: 'six-months',
+        mode: 'payment',
+        stripePriceEnv: 'STRIPE_PRICE_PERFORM_AUTONOME_6_MONTHS',
         label: '6 mois',
         badge: '-11%',
         detail: 'Paiement unique · sans reconduction',
@@ -67,6 +75,8 @@ export const PRODUCTS = {
       },
       {
         id: 'twelve-months',
+        mode: 'payment',
+        stripePriceEnv: 'STRIPE_PRICE_PERFORM_AUTONOME_12_MONTHS',
         label: '12 mois',
         badge: '-22%',
         detail: 'Paiement unique · sans reconduction',
@@ -93,10 +103,13 @@ export const PRODUCTS = {
       'Logique expliquée à chaque étape',
     ],
     parent: { label: 'Coaching', href: '/coaching' },
+    confirmationPath: '/confirmcoaching',
     notice: 'Sans engagement · Résiliable à tout moment · Confirmation par email',
     plans: [
       {
         id: 'monthly',
+        mode: 'subscription',
+        stripePriceEnv: 'STRIPE_PRICE_PERFORM_COACHING_MONTHLY',
         label: 'Mensuel',
         detail: 'Résiliable à tout moment',
         price: '199€',
@@ -106,6 +119,8 @@ export const PRODUCTS = {
       },
       {
         id: 'six-months',
+        mode: 'payment',
+        stripePriceEnv: 'STRIPE_PRICE_PERFORM_COACHING_6_MONTHS',
         label: '6 mois',
         badge: '-12%',
         detail: 'Paiement unique · sans reconduction',
@@ -116,6 +131,8 @@ export const PRODUCTS = {
       },
       {
         id: 'twelve-months',
+        mode: 'payment',
+        stripePriceEnv: 'STRIPE_PRICE_PERFORM_COACHING_12_MONTHS',
         label: '12 mois',
         badge: '-25%',
         detail: 'Paiement unique · sans reconduction',
@@ -142,10 +159,13 @@ export const PRODUCTS = {
       'Recommandations de suite personnalisées',
     ],
     parent: { label: 'Consulting', href: '/consulting' },
+    confirmationPath: '/confirmconsulting',
     notice: 'Paiement unique · Lien de rendez-vous envoyé par email après confirmation',
     plans: [
       {
         id: 'one-shot',
+        mode: 'payment',
+        stripePriceEnv: 'STRIPE_PRICE_CONSULTING_ONESHOT',
         label: 'Paiement unique',
         detail: 'Sans reconduction',
         price: '97€',

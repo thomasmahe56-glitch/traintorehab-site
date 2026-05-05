@@ -9,16 +9,43 @@ interface Props {
   productKey: ProductKey
 }
 
-export default function CheckoutForm({ product }: Props) {
+export default function CheckoutForm({ product, productKey }: Props) {
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [selectedPlanId, setSelectedPlanId] = useState<string>(product.plans[0].id)
   const selectedPlan = product.plans.find((plan) => plan.id === selectedPlanId) ?? product.plans[0]
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
+    setError(null)
     setLoading(true)
-    // Stripe Payment Intent + confirmation — à brancher à l'étape 2
-    setTimeout(() => setLoading(false), 1200)
+
+    const formData = new FormData(e.currentTarget)
+    const response = await fetch('/api/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        productKey,
+        planId: selectedPlan.id,
+        firstName: formData.get('firstName'),
+        lastName: formData.get('lastName'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        objective: formData.get('objective'),
+        level: formData.get('level'),
+        message: formData.get('message'),
+      }),
+    })
+
+    const data = await response.json()
+
+    if (!response.ok || !data.url) {
+      setError(data.error || 'Impossible de démarrer le paiement Stripe.')
+      setLoading(false)
+      return
+    }
+
+    window.location.href = data.url
   }
 
   return (
@@ -161,14 +188,6 @@ export default function CheckoutForm({ product }: Props) {
           border-radius: 8px;
           background: var(--color-off-white);
           padding: 22px;
-          display: grid;
-          gap: 16px;
-        }
-
-        .co-card-row {
-          display: grid;
-          grid-template-columns: 1.5fr 0.7fr 0.7fr;
-          gap: 12px;
         }
 
         .co-plan-grid {
@@ -267,6 +286,16 @@ export default function CheckoutForm({ product }: Props) {
         .co-stripe-note strong {
           color: var(--color-navy);
           font-weight: 600;
+        }
+
+        .co-error {
+          border: 1px solid rgba(230,57,70,0.22);
+          background: rgba(230,57,70,0.06);
+          color: #b4232d;
+          border-radius: 8px;
+          padding: 14px 16px;
+          font-size: 13px;
+          line-height: 1.5;
         }
 
         /* Submit */
@@ -452,7 +481,6 @@ export default function CheckoutForm({ product }: Props) {
 
         @media (max-width: 640px) {
           .co-grid { grid-template-columns: 1fr; }
-          .co-card-row { grid-template-columns: 1fr; }
           .co-plan-grid { grid-template-columns: 1fr; }
         }
       `}</style>
@@ -490,19 +518,19 @@ export default function CheckoutForm({ product }: Props) {
               <div className="co-grid">
                 <label className="co-label">
                   Prénom
-                  <input className="co-input" type="text" autoComplete="given-name" placeholder="Thomas" required />
+                  <input className="co-input" name="firstName" type="text" autoComplete="given-name" placeholder="Thomas" required />
                 </label>
                 <label className="co-label">
                   Nom
-                  <input className="co-input" type="text" autoComplete="family-name" placeholder="Mahé" required />
+                  <input className="co-input" name="lastName" type="text" autoComplete="family-name" placeholder="Mahé" required />
                 </label>
                 <label className="co-label">
                   Email
-                  <input className="co-input" type="email" autoComplete="email" placeholder="email@exemple.com" required />
+                  <input className="co-input" name="email" type="email" autoComplete="email" placeholder="email@exemple.com" required />
                 </label>
                 <label className="co-label">
                   Téléphone
-                  <input className="co-input" type="tel" autoComplete="tel" placeholder="+33 6 00 00 00 00" />
+                  <input className="co-input" name="phone" type="tel" autoComplete="tel" placeholder="+33 6 00 00 00 00" />
                 </label>
               </div>
             </section>
@@ -513,7 +541,7 @@ export default function CheckoutForm({ product }: Props) {
               <div className="co-grid">
                 <label className="co-label">
                   Objectif principal
-                  <select className="co-select" defaultValue="blessure">
+                  <select className="co-select" name="objective" defaultValue="blessure">
                     <option value="blessure">Reprendre après blessure</option>
                     <option value="course">Préparer une course</option>
                     <option value="douleur">Comprendre une douleur / stagnation</option>
@@ -522,7 +550,7 @@ export default function CheckoutForm({ product }: Props) {
                 </label>
                 <label className="co-label">
                   Niveau actuel
-                  <select className="co-select" defaultValue="regulier">
+                  <select className="co-select" name="level" defaultValue="regulier">
                     <option value="debutant">Débutant (moins d&apos;un an de course)</option>
                     <option value="regulier">Régulier (1 à 3 ans)</option>
                     <option value="confirme">Confirmé (3 ans et plus)</option>
@@ -533,6 +561,7 @@ export default function CheckoutForm({ product }: Props) {
                   Message pour préparer la suite
                   <textarea
                     className="co-textarea"
+                    name="message"
                     placeholder="Objectif, échéance, douleurs actuelles, volume hebdomadaire, contraintes de planning..."
                   />
                 </label>
@@ -565,33 +594,20 @@ export default function CheckoutForm({ product }: Props) {
             <section className="co-section">
               <h2 className="co-section-title">Paiement sécurisé</h2>
               <div className="co-payment-box">
-                <div className="co-card-row">
-                  <label className="co-label">
-                    Numéro de carte
-                    <input className="co-input" type="text" inputMode="numeric" placeholder="4242 4242 4242 4242" />
-                  </label>
-                  <label className="co-label">
-                    Expiration
-                    <input className="co-input" type="text" inputMode="numeric" placeholder="MM / AA" />
-                  </label>
-                  <label className="co-label">
-                    CVC
-                    <input className="co-input" type="text" inputMode="numeric" placeholder="123" />
-                  </label>
-                </div>
                 <div className="co-stripe-note">
                   <span className="co-lock">✓</span>
                   <p>
-                    <strong>Maquette visuelle.</strong> Dans la version finale, ces champs seront remplacés par{' '}
-                    Stripe Elements — les données bancaires ne toucheront jamais les serveurs TrainToRehab.
+                    <strong>Stripe Checkout.</strong> Après validation, tu seras redirigé vers une page Stripe sécurisée. Les données bancaires ne touchent jamais les serveurs TrainToRehab.
                   </p>
                 </div>
               </div>
             </section>
 
+            {error ? <p className="co-error">{error}</p> : null}
+
             <div className="co-submit-row">
               <button className="co-btn-submit" type="submit" disabled={loading}>
-                {loading ? 'Traitement…' : selectedPlan.buttonLabel}
+                {loading ? 'Ouverture de Stripe…' : selectedPlan.buttonLabel}
               </button>
               <p className="co-submit-note">{product.notice}</p>
             </div>
