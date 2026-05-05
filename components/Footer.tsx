@@ -2,12 +2,12 @@ import Link from "next/link";
 
 const coachingLinks = [
   { label: "TrainToRestart", href: "/coaching/restart" },
-  { label: "TrainToPerform Coaching", href: "/coaching/perform-coaching" },
-  { label: "TrainToPerform Autonome", href: "/coaching/perform-autonome" },
+  { label: "TrainToPerform", href: "/coaching/perform" },
 ];
 
 const siteLinks = [
   { label: "À propos", href: "/a-propos" },
+  { label: "Consulting", href: "/consulting" },
   { label: "Formation", href: "/formation" },
   { label: "Contact", href: "/contact" },
 ];

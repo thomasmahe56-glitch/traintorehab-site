@@ -500,7 +500,7 @@ export default function CoachingPage() {
             <p className="bifur-desc">Tu as des douleurs ou tu veux reprendre la course en toute sécurité. On reprend avec méthode, pas au hasard.</p>
             <span className="bifur-link">Découvrir l&apos;offre →</span>
           </Link>
-          <Link href="/coaching/perform-coaching" className="bifur-card">
+          <Link href="/coaching/perform" className="bifur-card">
             <p className="bifur-label">Performance</p>
             <h2 className="bifur-title">TrainToPerform</h2>
             <p className="bifur-desc">Tu cours sans douleur et tu cherches à aller plus loin, plus vite. Avec ou sans accompagnement direct.</p>
@@ -549,7 +549,7 @@ export default function CoachingPage() {
                 <li><span className="check-icon" />&nbsp;Feedbacks fréquents</li>
                 <li><span className="check-icon" />&nbsp;Pédagogie &amp; compréhension du plan</li>
               </ul>
-              <Link href="/coaching/perform-coaching" className="comp-cta primary">Découvrir TrainToPerform Coaching</Link>
+              <Link href="/coaching/perform#coaching" className="comp-cta primary">Découvrir TrainToPerform Coaching</Link>
             </div>
           </div>
 
@@ -565,7 +565,7 @@ export default function CoachingPage() {
                 <li className="feat-muted"><span className="cross-icon" />&nbsp;Pas de contact coach</li>
                 <li className="feat-muted"><span className="cross-icon" />&nbsp;Pas d&apos;ajustements en cours</li>
               </ul>
-              <Link href="/coaching/perform-autonome" className="comp-cta secondary">Découvrir TrainToPerform Autonome</Link>
+              <Link href="/coaching/perform#autonome" className="comp-cta secondary">Découvrir TrainToPerform Autonome</Link>
             </div>
           </div>
         </div>

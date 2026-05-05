@@ -653,8 +653,8 @@ export default function HomePage() {
         <div className="offers-grid">
           {[
             { tag: 'Blessure & douleur', name: 'TrainToRestart', desc: "Tu reviens de blessure ou tu as des douleurs chroniques. On pose un cadre clair pour reprendre avec méthode — pas au hasard.", price: '199', href: '/coaching/restart', featured: false },
-            { tag: 'Performance accompagnée', name: 'TrainToPerform Coaching', desc: "Tu cours sans douleur et tu veux progresser. Un plan vivant, ajusté chaque semaine selon tes retours. Contact direct coach.", price: '199', href: '/coaching/perform-coaching', featured: true },
-            { tag: 'Performance autonome', name: 'TrainToPerform Autonome', desc: "Un plan structuré sur un mois, conçu pour ton profil. Tu t'entraînes en toute indépendance avec une logique claire derrière chaque séance.", price: '89', href: '/coaching/perform-autonome', featured: false },
+            { tag: 'Performance accompagnée', name: 'TrainToPerform Coaching', desc: "Tu cours sans douleur et tu veux progresser. Un plan vivant, ajusté chaque semaine selon tes retours. Contact direct coach.", price: '199', href: '/coaching/perform#coaching', featured: true },
+            { tag: 'Performance autonome', name: 'TrainToPerform Autonome', desc: "Un plan structuré sur un mois, conçu pour ton profil. Tu t'entraînes en toute indépendance avec une logique claire derrière chaque séance.", price: '89', href: '/coaching/perform#autonome', featured: false },
           ].map((offer, i) => (
             <div key={offer.name} className={`offer-card${offer.featured ? ' featured' : ''} stagger-${i + 1}`}>
               <p className="offer-tag">{offer.tag}</p>

@@ -183,7 +183,7 @@ export default function RestartPage() {
           <h1 className="r-title">Tu cours.<br />Tu te blesses.<br /><em>Tu recommences.</em></h1>
           <p className="r-sub">Il est temps de sortir de ce cycle. Pas avec des exercices de plus. Avec <strong>un cadre qui tient dans le temps</strong>.</p>
           <div className="r-ctas">
-            <a href="https://traintorehab.com/checkoutrestart" className="btn-wh">Commencer — 199€/mois</a>
+            <a href="/checkout/restart" className="btn-wh">Commencer — 199€/mois</a>
             <a href="#appel" className="btn-gh">Parler à Thomas d&apos;abord</a>
           </div>
           <p className="r-note">Sans engagement · Résiliable à tout moment</p>
@@ -196,7 +196,7 @@ export default function RestartPage() {
             <ul className="r-pfeatures">
               {features.map(f => <li key={f}><span className="pf-chk" />{f}</li>)}
             </ul>
-            <a href="https://traintorehab.com/checkoutrestart" className="r-pcta">Commencer maintenant</a>
+            <a href="/checkout/restart" className="r-pcta">Commencer maintenant</a>
             <p className="r-pnote">Sans engagement · Résiliable à tout moment</p>
           </div>
         </div>
@@ -321,7 +321,7 @@ export default function RestartPage() {
           <h2 className="cta-ti">Reprends.<br /><em>Sans peur.</em><br />Cette fois.</h2>
           <p className="cta-sub">Un premier mois pour voir si le cadre te convient. Sans engagement. Sans promesse magique.</p>
           <div className="cta-btns">
-            <a href="https://traintorehab.com/checkoutrestart" className="btn-inv">Commencer — 199€/mois</a>
+            <a href="/checkout/restart" className="btn-inv">Commencer — 199€/mois</a>
             <a href="https://calendly.com/traintorehab/traintorehab-thomas-mahe" className="btn-gw">Parler à Thomas d&apos;abord</a>
           </div>
           <p className="cta-note">Résiliable à tout moment · Réponse sous 24h · Places limitées</p>

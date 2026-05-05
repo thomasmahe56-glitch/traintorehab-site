@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { useEffect } from 'react'
 
-const checkoutUrl = 'https://traintorehab.com/checkoutconsulting'
+const checkoutUrl = '/checkout/perform-coaching'
 const calendlyUrl = 'https://calendly.com/traintorehab/traintorehab-thomas-mahe'
 
 const profiles = [
@@ -64,7 +64,7 @@ const testimonials = [
     result: "Tempo 10km : 5'10/km → 4'44/km",
   },
   {
-    quote: "Je voulais finir mon premier trail 50km sans me planter physiquement. Thomas à tout construit autour de mes contraintes : 3 gamins, boulot prenant, peu de temps le week-end. Terminé en 7h04, sans bobos.",
+    quote: "Je voulais finir mon premier trail 50km sans me planter physiquement. Thomas a tout construit autour de mes contraintes : 3 gamins, boulot prenant, peu de temps le week-end. Terminé en 7h04, sans bobos.",
     name: 'Romain, 41 ans — chef de projet à Nantes',
     result: 'Trail 50km : premier finish, 7h04',
   },
@@ -96,7 +96,7 @@ export default function PerformCoachingPage() {
         .p-hero { min-height: 86vh; background: #070265; color: #FEFEFE; display: grid; grid-template-columns: 1.1fr 0.9fr; padding: 80px 80px; align-items: center; position: relative; overflow: hidden; }
         .p-hero::before { content: 'PERFORM'; position: absolute; right: -18px; bottom: -24px; font-family: var(--font-heading); font-size: 260px; color: rgba(255,255,255,0.025); letter-spacing: 0.05em; pointer-events: none; }
         .p-breadcrumb { display: flex; gap: 8px; align-items: center; font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 28px; opacity: 0; animation: fadeUp 0.5s ease forwards 0.1s; }
-        .p-breadcrumb à { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
+        .p-breadcrumb a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color 0.2s; }
         .p-breadcrumb a:hover { color: rgba(255,255,255,0.75); }
         .p-badge { display: inline-flex; width: fit-content; border: 1px solid rgba(255,255,255,0.24); border-radius: 999px; padding: 7px 16px; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.5s ease forwards 0.2s; }
         .p-title { font-family: var(--font-heading); font-size: clamp(52px, 6vw, 92px); line-height: 0.92; letter-spacing: 0.01em; margin-bottom: 28px; opacity: 0; animation: fadeUp 0.65s ease forwards 0.35s; }
@@ -164,7 +164,7 @@ export default function PerformCoachingPage() {
         .cta-box p { font-size: 14px; color: rgba(255,255,255,0.66); line-height: 1.6; margin-bottom: 24px; }
         .cta-price { font-family: var(--font-heading); font-size: 40px; line-height: 1; margin-bottom: 22px; }
         .cta-price span { font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,0.52); font-weight: 300; }
-        .cta-box à { width: 100%; text-align: center; }
+        .cta-box a { width: 100%; text-align: center; }
 
         .reveal, .reveal-left { opacity: 0; transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
         .reveal { transform: translateY(32px); }
@@ -204,7 +204,7 @@ export default function PerformCoachingPage() {
           <div className="p-price">199</div>
           <p className="p-period">€ / mois · sans engagement</p>
           <ul className="p-card-list">
-            {['Bilan complet et objectifs clarifies', 'Plan hebdomadaire sur mesure', 'Ajustements selon tes retours', 'Acces direct à Thomas sur WhatsApp', 'Logique expliquee derriere chaque séance'].map((item) => (
+            {['Bilan complet et objectifs clarifiés', 'Plan hebdomadaire sur mesure', 'Ajustements selon tes retours', 'Accès direct à Thomas sur WhatsApp', 'Logique expliquée derrière chaque séance'].map((item) => (
               <li key={item}><span className="p-dot" />{item}</li>
             ))}
           </ul>
@@ -215,7 +215,7 @@ export default function PerformCoachingPage() {
       <section className="p-section">
         <div className="p-inner reveal-left">
           <p className="p-ey">Ce que tu vis</p>
-          <h2 className="p-h2">Ca fait des mois que tu fais <em>bien.</em></h2>
+          <h2 className="p-h2">Ça fait des mois que tu fais <em>bien.</em></h2>
           <div className="p-prose">
             <p>Tu sors courir régulièrement. Tu respectes tes séances. Tu regardes ta montre, tu analyses tes données. Et pourtant, au prochain chrono, c&apos;est la même chose. Ou presque.</p>
             <p>Tu as essayé les plans Garmin. Les programmes YouTube. Les applis qui promettent de te transformer en 12 semaines. Certains étaient corrects. Aucun ne tenait vraiment compte de toi : tes horaires, tes nuits courtes, le mercredi ou tu bosses tard, le week-end ou tu as enfin du temps.</p>
