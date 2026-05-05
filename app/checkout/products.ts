@@ -143,38 +143,6 @@ export const PRODUCTS = {
       },
     ],
   },
-  consulting: {
-    badge: 'Consulting',
-    name: 'Bilan individualisé',
-    desc: "Un bilan d'une heure pour lire ton contexte global, clarifier les priorités et prendre de meilleures décisions.",
-    priceNum: '97',
-    period: 'paiement unique',
-    total: "97€ aujourd'hui — paiement unique",
-    buttonLabel: 'Payer 97€',
-    features: [
-      "1 heure d'échange en visio",
-      'Analyse globale de ton contexte',
-      'Lecture entraînement et douleurs',
-      'Axes prioritaires identifiés',
-      'Recommandations de suite personnalisées',
-    ],
-    parent: { label: 'Consulting', href: '/consulting' },
-    confirmationPath: '/confirmconsulting',
-    notice: 'Paiement unique · Lien de rendez-vous envoyé par email après confirmation',
-    plans: [
-      {
-        id: 'one-shot',
-        mode: 'payment',
-        stripePriceEnv: 'STRIPE_PRICE_CONSULTING_ONESHOT',
-        label: 'Paiement unique',
-        detail: 'Sans reconduction',
-        price: '97€',
-        period: 'paiement unique',
-        total: "97€ aujourd'hui — paiement unique",
-        buttonLabel: 'Payer 97€',
-      },
-    ],
-  },
 } as const
 
 export type ProductKey = keyof typeof PRODUCTS

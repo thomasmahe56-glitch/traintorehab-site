@@ -7,7 +7,6 @@ const coachingLinks = [
 
 const siteLinks = [
   { label: "À propos", href: "/a-propos" },
-  { label: "Consulting", href: "/consulting" },
   { label: "Formation", href: "/formation" },
   { label: "Contact", href: "/contact" },
 ];
