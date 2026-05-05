@@ -11,6 +11,8 @@ interface Props {
 
 export default function CheckoutForm({ product }: Props) {
   const [loading, setLoading] = useState(false)
+  const [selectedPlanId, setSelectedPlanId] = useState<string>(product.plans[0].id)
+  const selectedPlan = product.plans.find((plan) => plan.id === selectedPlanId) ?? product.plans[0]
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -167,6 +169,73 @@ export default function CheckoutForm({ product }: Props) {
           display: grid;
           grid-template-columns: 1.5fr 0.7fr 0.7fr;
           gap: 12px;
+        }
+
+        .co-plan-grid {
+          display: grid;
+          grid-template-columns: repeat(${product.plans.length}, minmax(0, 1fr));
+          gap: 12px;
+        }
+
+        .co-plan-option {
+          border: 1px solid var(--color-gray-light);
+          background: var(--color-off-white);
+          border-radius: 8px;
+          padding: 18px;
+          text-align: left;
+          font-family: var(--font-body);
+          cursor: pointer;
+          transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.2s;
+        }
+
+        .co-plan-option:hover {
+          border-color: rgba(7,2,101,0.35);
+          transform: translateY(-1px);
+        }
+
+        .co-plan-option.active {
+          background: var(--color-white);
+          border-color: var(--color-navy);
+          box-shadow: 0 14px 34px rgba(7,2,101,0.08);
+        }
+
+        .co-plan-head {
+          display: flex;
+          justify-content: space-between;
+          gap: 10px;
+          align-items: flex-start;
+          margin-bottom: 10px;
+        }
+
+        .co-plan-label {
+          color: var(--color-navy);
+          font-size: 14px;
+          font-weight: 700;
+        }
+
+        .co-plan-badge {
+          background: rgba(5,150,105,0.12);
+          color: #059669;
+          border-radius: 999px;
+          padding: 3px 8px;
+          font-size: 10px;
+          font-weight: 800;
+          white-space: nowrap;
+        }
+
+        .co-plan-price {
+          font-family: var(--font-heading);
+          color: var(--color-navy);
+          font-size: 34px;
+          line-height: 1;
+          letter-spacing: 0.02em;
+          margin-bottom: 6px;
+        }
+
+        .co-plan-detail {
+          color: var(--color-gray-mid);
+          font-size: 12px;
+          line-height: 1.45;
         }
 
         .co-stripe-note {
@@ -384,6 +453,7 @@ export default function CheckoutForm({ product }: Props) {
         @media (max-width: 640px) {
           .co-grid { grid-template-columns: 1fr; }
           .co-card-row { grid-template-columns: 1fr; }
+          .co-plan-grid { grid-template-columns: 1fr; }
         }
       `}</style>
 
@@ -469,6 +539,28 @@ export default function CheckoutForm({ product }: Props) {
               </div>
             </section>
 
+            {/* Formule */}
+            <section className="co-section">
+              <h2 className="co-section-title">Formule</h2>
+              <div className="co-plan-grid">
+                {product.plans.map((plan) => (
+                  <button
+                    className={`co-plan-option${plan.id === selectedPlan.id ? ' active' : ''}`}
+                    key={plan.id}
+                    onClick={() => setSelectedPlanId(plan.id)}
+                    type="button"
+                  >
+                    <div className="co-plan-head">
+                      <span className="co-plan-label">{plan.label}</span>
+                      {'badge' in plan ? <span className="co-plan-badge">{plan.badge}</span> : null}
+                    </div>
+                    <div className="co-plan-price">{plan.price}</div>
+                    <p className="co-plan-detail">{plan.detail}</p>
+                  </button>
+                ))}
+              </div>
+            </section>
+
             {/* Paiement */}
             <section className="co-section">
               <h2 className="co-section-title">Paiement sécurisé</h2>
@@ -499,7 +591,7 @@ export default function CheckoutForm({ product }: Props) {
 
             <div className="co-submit-row">
               <button className="co-btn-submit" type="submit" disabled={loading}>
-                {loading ? 'Traitement…' : product.buttonLabel}
+                {loading ? 'Traitement…' : selectedPlan.buttonLabel}
               </button>
               <p className="co-submit-note">{product.notice}</p>
             </div>
@@ -515,9 +607,8 @@ export default function CheckoutForm({ product }: Props) {
             <p className="co-side-desc">{product.desc}</p>
 
             <div className="co-price-row">
-              <span className="co-amount">{product.priceNum}</span>
-              <span className="co-currency">€</span>
-              <span className="co-period">{product.period}</span>
+              <span className="co-amount">{selectedPlan.price}</span>
+              <span className="co-period">{selectedPlan.period}</span>
             </div>
 
             <ul className="co-features">
@@ -531,7 +622,7 @@ export default function CheckoutForm({ product }: Props) {
 
             <div className="co-total-box">
               <span className="co-total-label">Total</span>
-              <strong className="co-total-value">{product.total}</strong>
+              <strong className="co-total-value">{selectedPlan.total}</strong>
             </div>
 
             <p className="co-notice">{product.notice}</p>
