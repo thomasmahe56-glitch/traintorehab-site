@@ -14,7 +14,9 @@ type CheckoutRequest = {
 }
 
 function getBaseUrl(request: Request) {
-  return process.env.NEXT_PUBLIC_SITE_URL || new URL(request.url).origin
+  const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, '')
+  const fallbackUrl = new URL(request.url).origin
+  return configuredUrl || fallbackUrl
 }
 
 export async function POST(request: Request) {
