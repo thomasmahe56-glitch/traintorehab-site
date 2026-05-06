@@ -324,78 +324,113 @@ export default function HomePage() {
         .cycle-arrow.visible { opacity: 1; transform: translateX(0); }
 
         /* ── OFFRES ── */
-        .offers { background: #FEFEFE; padding: 96px 80px; }
+        .offers {
+          background: #070265;
+          padding: 96px 80px;
+          position: relative;
+          overflow: hidden;
+        }
+        .offers::before {
+          content: 'COACHING';
+          position: absolute;
+          font-family: var(--font-heading);
+          font-size: 260px;
+          color: rgba(255,255,255,0.035);
+          top: -42px;
+          left: 50%;
+          transform: translateX(-50%);
+          letter-spacing: 0.05em;
+          white-space: nowrap;
+          pointer-events: none;
+        }
         .offers-header {
           display: flex;
           justify-content: space-between;
           align-items: flex-end;
           margin-bottom: 56px;
+          position: relative;
+          z-index: 1;
+        }
+        .offers .section-eyebrow { color: rgba(255,255,255,0.48); }
+        .offers .section-title { color: #FEFEFE; }
+        .offers .section-title em {
+          -webkit-text-stroke-color: #FEFEFE;
+          opacity: 0.5;
         }
         .offers-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 2px;
-          background: #070265;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 24px;
+          background: transparent;
           border-radius: 12px;
-          overflow: hidden;
+          position: relative;
+          z-index: 1;
         }
         .offer-card {
           background: #FEFEFE;
-          padding: 40px 32px;
+          border-radius: 8px;
+          padding: 56px 48px;
           display: flex;
           flex-direction: column;
-          gap: 20px;
+          gap: 24px;
+          min-height: 360px;
           opacity: 0;
           transform: translateY(24px);
           transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1), background 0.2s, box-shadow 0.25s;
         }
         .offer-card.visible { opacity: 1; transform: translateY(0); }
-        .offer-card.visible:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(7,2,101,0.12); z-index: 2; }
-        .offer-card.featured { background: #070265; color: #FEFEFE; }
-        .offer-card.featured.visible:hover { background: #0a0399; box-shadow: 0 16px 48px rgba(7,2,101,0.3); }
+        .offer-card.visible:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.25); z-index: 2; }
         .offer-tag {
-          font-size: 10px;
+          font-size: 11px;
           font-weight: 600;
           letter-spacing: 0.14em;
           text-transform: uppercase;
           color: #9B9A96;
           margin-bottom: -8px;
         }
-        .offer-card.featured .offer-tag { color: rgba(255,255,255,0.5); }
         .offer-name {
           font-family: var(--font-heading);
-          font-size: 32px;
+          font-size: clamp(40px, 4vw, 56px);
           letter-spacing: 0.02em;
           color: #070265;
           line-height: 1;
         }
-        .offer-card.featured .offer-name { color: #FEFEFE; }
-        .offer-desc { font-size: 14px; font-weight: 300; color: #3D3C38; line-height: 1.6; flex: 1; }
-        .offer-card.featured .offer-desc { color: rgba(255,255,255,0.7); }
-        .offer-price { display: flex; align-items: baseline; gap: 4px; }
-        .offer-price .amount {
-          font-family: var(--font-heading);
-          font-size: 48px;
-          color: #070265;
-          line-height: 1;
-        }
-        .offer-card.featured .offer-price .amount { color: #FEFEFE; }
-        .offer-price .period { font-size: 13px; color: #9B9A96; font-weight: 300; }
-        .offer-card.featured .offer-price .period { color: rgba(255,255,255,0.5); }
+        .offer-desc { font-size: 18px; font-weight: 300; color: #3D3C38; line-height: 1.65; flex: 1; }
+        .offer-price { display: none; }
         .offer-link {
           display: flex;
           align-items: center;
           gap: 8px;
-          font-size: 13px;
-          font-weight: 500;
+          font-size: 16px;
+          font-weight: 700;
           color: #070265;
           text-decoration: none;
-          padding-top: 12px;
+          padding-top: 22px;
           border-top: 1px solid #E8E7E3;
           transition: gap 0.2s;
         }
-        .offer-card.featured .offer-link { color: #FEFEFE; border-top-color: rgba(255,255,255,0.2); }
         .offer-link:hover { gap: 14px; }
+
+        @media (max-width: 900px) {
+          .offers {
+            padding: 72px 28px;
+          }
+          .offers-header {
+            display: block;
+          }
+          .offers-header p {
+            max-width: 100% !important;
+            text-align: left !important;
+            margin-top: 18px;
+          }
+          .offers-grid {
+            grid-template-columns: 1fr;
+          }
+          .offer-card {
+            min-height: auto;
+            padding: 36px 28px;
+          }
+        }
 
         /* ── TÉMOIGNAGES ── */
         .social-proof { background: #F4F3F0; padding: 64px 80px; }
@@ -645,27 +680,22 @@ export default function HomePage() {
         <div className="offers-header reveal">
           <div>
             <p className="section-eyebrow">Les offres</p>
-            <h2 className="section-title">Un cadre.<br /><em>Pas</em> un plan.</h2>
+            <h2 className="section-title">Tu viens pour<br /><em>quoi ?</em></h2>
           </div>
-          <p style={{ maxWidth: '320px', fontSize: '15px', fontWeight: 300, color: '#9B9A96', lineHeight: 1.6, textAlign: 'right' }}>
-            Pas sûr ? L&apos;appel de 15 min sert à ça : je t&apos;oriente honnêtement.
+          <p style={{ maxWidth: '360px', fontSize: '15px', fontWeight: 300, color: 'rgba(255,255,255,0.62)', lineHeight: 1.6, textAlign: 'right' }}>
+            On ne mélange pas reprise et performance. Choisis ta situation, puis tu verras l&apos;offre adaptée.
           </p>
         </div>
         <div className="offers-grid">
           {[
-            { tag: 'Tu as une douleur ou tu veux reprendre en sécurité ?', name: 'TrainToRestart', desc: "Blessure, reprise, douleurs chroniques. On pose un cadre clair pour reprendre avec méthode, sans repartir au hasard.", price: '199', href: '/coaching/restart', featured: false },
-            { tag: 'Tu cours sans douleur et tu veux aller plus loin ?', name: 'TrainToPerform Coaching', desc: "Performance accompagnée. Un plan vivant, ajusté chaque semaine selon tes retours, avec un contact direct coach.", price: '199', href: '/coaching/perform#coaching', featured: true },
-            { tag: 'Tu veux progresser avec un cadre plus autonome ?', name: 'TrainToPerform Autonome', desc: "Performance autonome. Un plan structuré, conçu pour ton profil, avec une logique claire derrière chaque séance.", price: '89', href: '/coaching/perform#autonome', featured: false },
+            { tag: 'Blessure & douleur', name: 'TrainToRestart', desc: "Tu as des douleurs ou tu veux reprendre la course en toute sécurité. On reprend avec méthode, pas au hasard.", price: '', href: '/coaching/restart', link: "Découvrir l'offre", featured: false },
+            { tag: 'Performance', name: 'TrainToPerform', desc: "Tu cours sans douleur et tu cherches à aller plus loin, plus vite. Avec ou sans accompagnement direct.", price: '', href: '/coaching/perform', link: 'Découvrir les offres', featured: false },
           ].map((offer, i) => (
             <div key={offer.name} className={`offer-card${offer.featured ? ' featured' : ''} stagger-${i + 1}`}>
               <p className="offer-tag">{offer.tag}</p>
               <h3 className="offer-name">{offer.name}</h3>
               <p className="offer-desc">{offer.desc}</p>
-              <div className="offer-price">
-                <span className="amount">{offer.price}</span>
-                <span className="period">€ / mois</span>
-              </div>
-              <Link href={offer.href} className="offer-link">Découvrir l&apos;offre →</Link>
+              <Link href={offer.href} className="offer-link">{offer.link} →</Link>
             </div>
           ))}
         </div>
