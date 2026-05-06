@@ -188,27 +188,21 @@ export default function HomePage() {
           border-left: 1px solid rgba(255,255,255,0.08);
           opacity: 0;
           animation: fadeIn 1s ease forwards 0.5s;
+          position: relative;
         }
-        .hero-photo-inner {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 12px;
+        .hero-photo::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(7,2,101,0.12), rgba(7,2,101,0.28));
+          pointer-events: none;
         }
-        .hero-initials {
-          width: 120px; height: 120px;
-          border-radius: 50%;
-          border: 2px solid rgba(255,255,255,0.2);
-          display: flex; align-items: center; justify-content: center;
-          font-family: var(--font-heading);
-          font-size: 40px;
-          color: rgba(255,255,255,0.4);
-        }
-        .hero-photo-label {
-          font-size: 12px;
-          color: rgba(255,255,255,0.25);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
+        .hero-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center 34%;
+          display: block;
         }
         .hero-stats {
           position: absolute;
@@ -222,6 +216,7 @@ export default function HomePage() {
           box-shadow: 0 20px 60px rgba(0,0,0,0.3);
           opacity: 0;
           animation: fadeUp 0.7s ease forwards 1s;
+          z-index: 2;
         }
         .stat { text-align: center; }
         .stat-num {
@@ -491,18 +486,16 @@ export default function HomePage() {
           align-items: center;
           justify-content: center;
           border: 1px solid rgba(255,255,255,0.1);
+          overflow: hidden;
         }
-        .about-photo-inner { display: flex; flex-direction: column; align-items: center; gap: 12px; }
-        .about-initials {
-          width: 80px; height: 80px;
-          border-radius: 50%;
-          border: 1.5px solid rgba(255,255,255,0.2);
-          display: flex; align-items: center; justify-content: center;
-          font-family: var(--font-heading);
-          font-size: 28px;
-          color: rgba(255,255,255,0.35);
+        .about-image {
+          width: 100%;
+          height: 100%;
+          min-height: 480px;
+          object-fit: cover;
+          object-position: center 36%;
+          display: block;
         }
-        .about-photo-label { font-size: 11px; color: rgba(255,255,255,0.2); text-transform: uppercase; letter-spacing: 0.1em; }
         .about-body { font-size: 16px; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 32px; }
         .about-body strong { color: #FEFEFE; font-weight: 500; }
         .credentials { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
@@ -615,10 +608,7 @@ export default function HomePage() {
         </div>
         <div className="hero-right">
           <div className="hero-photo">
-            <div className="hero-photo-inner">
-              <div className="hero-initials">TM</div>
-              <p className="hero-photo-label">Photo à intégrer</p>
-            </div>
+            <img className="hero-image" src="/images/thomas-mahe.jpeg" alt="Thomas Mahé, kinésithérapeute et coach running TrainToRehab" />
           </div>
           <div className="hero-stats">
             <div className="stat">
@@ -730,10 +720,7 @@ export default function HomePage() {
       {/* À PROPOS */}
       <section className="about" id="a-propos">
         <div className="about-photo reveal-left">
-          <div className="about-photo-inner">
-            <div className="about-initials">TM</div>
-            <p className="about-photo-label">Photo à intégrer</p>
-          </div>
+          <img className="about-image" src="/images/thomas-mahe.jpeg" alt="Portrait de Thomas Mahé" />
         </div>
         <div className="reveal-right">
           <p className="section-eyebrow" style={{ color: 'rgba(255,255,255,0.4)' }}>Thomas Mahé</p>
