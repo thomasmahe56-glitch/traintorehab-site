@@ -21,15 +21,6 @@ export default function CoachingPage() {
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
     revealEls.forEach(el => revealObs.observe(el))
 
-    // Comp cards
-    const compCards = document.querySelectorAll('.comp-card')
-    const compObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { e.target.classList.add('visible'); compObs.unobserve(e.target) }
-      })
-    }, { threshold: 0.1 })
-    compCards.forEach(el => compObs.observe(el))
-
     // Process steps cascade
     const steps = document.querySelectorAll('.process-step')
     const stepsObs = new IntersectionObserver((entries) => {
@@ -202,9 +193,19 @@ export default function CoachingPage() {
         }
         .bifur-card:hover .bifur-link { gap: 12px; }
 
-        /* COMPARATEUR */
-        .comparateur { background: #F4F3F0; padding: 96px 80px; }
-        .comp-header { text-align: center; margin-bottom: 64px; }
+        .choice-transition {
+          background: #F4F3F0;
+          padding: 84px 80px;
+          text-align: center;
+        }
+        .choice-transition p {
+          max-width: 620px;
+          margin: 0 auto;
+          font-size: 18px;
+          font-weight: 300;
+          color: #3D3C38;
+          line-height: 1.7;
+        }
         .section-eyebrow {
           font-size: 11px;
           font-weight: 500;
@@ -227,125 +228,6 @@ export default function CoachingPage() {
           -webkit-text-stroke: 1.5px #070265;
           opacity: 0.45;
         }
-        .comp-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 20px;
-          max-width: 1000px;
-          margin: 0 auto;
-        }
-        .comp-card {
-          background: #FEFEFE;
-          border-radius: 12px;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
-          border: 1px solid #E8E7E3;
-          opacity: 0;
-          transform: translateY(28px);
-          transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s;
-        }
-        .comp-card.visible { opacity: 1; transform: translateY(0); }
-        .comp-card.visible:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(7,2,101,0.1); }
-        .comp-card.featured { border: 2px solid #070265; }
-        .comp-badge {
-          background: #070265;
-          color: #FEFEFE;
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          text-align: center;
-          padding: 8px;
-        }
-        .comp-body { padding: 32px 28px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
-        .comp-tag {
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 0.14em;
-          text-transform: uppercase;
-          color: #9B9A96;
-        }
-        .comp-name {
-          font-family: var(--font-heading);
-          font-size: 28px;
-          color: #070265;
-          letter-spacing: 0.02em;
-          line-height: 1.05;
-        }
-        .comp-price {
-          display: flex;
-          align-items: baseline;
-          gap: 4px;
-          padding-bottom: 20px;
-          border-bottom: 1px solid #E8E7E3;
-        }
-        .comp-price .amount {
-          font-family: var(--font-heading);
-          font-size: 52px;
-          color: #070265;
-          line-height: 1;
-        }
-        .comp-price .period { font-size: 13px; color: #9B9A96; font-weight: 300; }
-        .comp-features { list-style: none; display: flex; flex-direction: column; gap: 12px; flex: 1; }
-        .comp-features li {
-          display: flex;
-          align-items: flex-start;
-          gap: 10px;
-          font-size: 14px;
-          color: #3D3C38;
-          line-height: 1.4;
-        }
-        .check-icon {
-          width: 16px; height: 16px;
-          border-radius: 50%;
-          background: #070265;
-          flex-shrink: 0;
-          margin-top: 2px;
-          display: flex; align-items: center; justify-content: center;
-        }
-        .check-icon::after {
-          content: '';
-          width: 6px; height: 3px;
-          border-left: 1.5px solid white;
-          border-bottom: 1.5px solid white;
-          transform: rotate(-45deg) translateY(-1px);
-          display: block;
-        }
-        .cross-icon {
-          width: 16px; height: 16px;
-          border-radius: 50%;
-          background: #E8E7E3;
-          flex-shrink: 0;
-          margin-top: 2px;
-          position: relative;
-        }
-        .cross-icon::before, .cross-icon::after {
-          content: '';
-          position: absolute;
-          width: 7px; height: 1.5px;
-          background: #9B9A96;
-          top: 50%; left: 50%;
-        }
-        .cross-icon::before { transform: translate(-50%,-50%) rotate(45deg); }
-        .cross-icon::after  { transform: translate(-50%,-50%) rotate(-45deg); }
-        .feat-muted { opacity: 0.45; }
-        .comp-cta {
-          display: block;
-          margin-top: 24px;
-          padding: 14px;
-          text-align: center;
-          border-radius: 6px;
-          font-size: 14px;
-          font-weight: 600;
-          text-decoration: none;
-          transition: all 0.2s;
-        }
-        .comp-cta.primary { background: #070265; color: #FEFEFE; }
-        .comp-cta.primary:hover { background: #0a0399; transform: translateY(-1px); }
-        .comp-cta.secondary { border: 1px solid #070265; color: #070265; }
-        .comp-cta.secondary:hover { background: #F4F3F0; }
-
         /* PROCESS */
         .process-section { background: #FEFEFE; padding: 96px 80px; }
         .process-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
@@ -509,66 +391,10 @@ export default function CoachingPage() {
         </div>
       </section>
 
-      {/* COMPARATEUR */}
-      <section className="comparateur">
-        <div className="comp-header reveal">
-          <p className="section-eyebrow">Comparatif des offres</p>
-          <h2 className="section-title">Choisir le bon <em>format</em></h2>
-          <p style={{ fontSize: '16px', fontWeight: 300, color: '#9B9A96', maxWidth: '480px', margin: '0 auto', lineHeight: 1.6 }}>
-            Une seule question à te poser : est-ce que tu as besoin d&apos;un échange régulier avec un coach pour rester cohérent ?
-          </p>
-        </div>
-
-        <div className="comp-grid">
-          <div className="comp-card stagger-1">
-            <div className="comp-body">
-              <p className="comp-tag">Blessure &amp; douleur</p>
-              <h3 className="comp-name">TrainToRestart</h3>
-              <div className="comp-price"><span className="amount">199</span><span className="period">€ / mois</span></div>
-              <ul className="comp-features">
-                <li><span className="check-icon" />&nbsp;Consultation bilan &amp; diagnostic</li>
-                <li><span className="check-icon" />&nbsp;Plan personnalisé et évolutif</li>
-                <li><span className="check-icon" />&nbsp;Suivi via application coaching</li>
-                <li><span className="check-icon" />&nbsp;Contact direct coach (WhatsApp)</li>
-                <li><span className="check-icon" />&nbsp;Pédagogie &amp; montée en autonomie</li>
-              </ul>
-              <Link href="/coaching/restart" className="comp-cta secondary">Découvrir TrainToRestart</Link>
-            </div>
-          </div>
-
-          <div className="comp-card featured stagger-2">
-            <div className="comp-badge">Le plus choisi</div>
-            <div className="comp-body">
-              <p className="comp-tag">Performance accompagnée</p>
-              <h3 className="comp-name">TrainToPerform Coaching</h3>
-              <div className="comp-price"><span className="amount">199</span><span className="period">€ / mois</span></div>
-              <ul className="comp-features">
-                <li><span className="check-icon" />&nbsp;Planification évolutive mensuelle</li>
-                <li><span className="check-icon" />&nbsp;Ajustements selon tes retours</li>
-                <li><span className="check-icon" />&nbsp;Contact direct coach (WhatsApp)</li>
-                <li><span className="check-icon" />&nbsp;Feedbacks fréquents</li>
-                <li><span className="check-icon" />&nbsp;Pédagogie &amp; compréhension du plan</li>
-              </ul>
-              <Link href="/coaching/perform#coaching" className="comp-cta primary">Découvrir TrainToPerform Coaching</Link>
-            </div>
-          </div>
-
-          <div className="comp-card stagger-3">
-            <div className="comp-body">
-              <p className="comp-tag">Performance autonome</p>
-              <h3 className="comp-name">TrainToPerform Autonome</h3>
-              <div className="comp-price"><span className="amount">89</span><span className="period">€ / mois</span></div>
-              <ul className="comp-features">
-                <li><span className="check-icon" />&nbsp;Planification structurée sur 1 mois</li>
-                <li><span className="check-icon" />&nbsp;Volume &amp; intensités adaptés à ton profil</li>
-                <li><span className="check-icon" />&nbsp;Logique claire derrière chaque séance</li>
-                <li className="feat-muted"><span className="cross-icon" />&nbsp;Pas de contact coach</li>
-                <li className="feat-muted"><span className="cross-icon" />&nbsp;Pas d&apos;ajustements en cours</li>
-              </ul>
-              <Link href="/coaching/perform#autonome" className="comp-cta secondary">Découvrir TrainToPerform Autonome</Link>
-            </div>
-          </div>
-        </div>
+      <section className="choice-transition">
+        <p>
+          L&apos;objectif ici est simple : t&apos;orienter vers le bon parcours. Si tu viens pour une douleur ou une reprise, commence par TrainToRestart. Si tu viens pour progresser, va vers TrainToPerform.
+        </p>
       </section>
 
       {/* PROCESS */}
