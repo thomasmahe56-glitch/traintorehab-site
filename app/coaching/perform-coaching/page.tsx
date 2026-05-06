@@ -55,17 +55,17 @@ const weeks = [
 const testimonials = [
   {
     quote: "J'avais suivi trois plans marathon en deux ans. Même résultat à chaque fois. Avec Thomas, j'ai compris en S2 pourquoi je stagnais : je récupérais jamais vraiment. Mon chrono a baissé de 18 minutes sur mon prochain marathon.",
-    name: 'Marc, 37 ans — consultant à Lyon',
+    name: 'Marc, 37 ans, consultant à Lyon',
     result: 'Marathon : 3h41 → 3h23',
   },
   {
     quote: "Je courais 5 jours par semaine, souvent épuisé. Je pensais que c'était normal. Thomas m'a mis sur 4 séances, mieux construites, et j'ai retrouvé l'envie. Et je cours plus vite qu'avant.",
-    name: 'Sophie, 34 ans — cadre RH à Bordeaux',
+    name: 'Sophie, 34 ans, cadre RH à Bordeaux',
     result: "Tempo 10km : 5'10/km → 4'44/km",
   },
   {
     quote: "Je voulais finir mon premier trail 50km sans me planter physiquement. Thomas a tout construit autour de mes contraintes : 3 gamins, boulot prenant, peu de temps le week-end. Terminé en 7h04, sans bobos.",
-    name: 'Romain, 41 ans — chef de projet à Nantes',
+    name: 'Romain, 41 ans, chef de projet à Nantes',
     result: 'Trail 50km : premier finish, 7h04',
   },
 ]
@@ -193,9 +193,9 @@ export default function PerformCoachingPage() {
           </div>
           <div className="p-badge">TrainToPerform Coaching</div>
           <h1 className="p-title">Tu t&apos;entraînes.<br />Tu ne <em>progresses</em> plus.</h1>
-          <p className="p-sub">Un coaching course à pied fait pour les coureurs réguliers qui stagnent depuis trop longtemps — et qui veulent enfin comprendre pourquoi.</p>
+          <p className="p-sub">Un coaching course à pied fait pour les coureurs réguliers qui stagnent depuis trop longtemps, et qui veulent enfin comprendre pourquoi.</p>
           <div className="p-ctas">
-            <a href={checkoutUrl} className="btn-p-white">Commencer maintenant — 199€/mois</a>
+            <a href={checkoutUrl} className="btn-p-white">Commencer maintenant, 199€/mois</a>
             <a href="#appel" className="btn-p-ghost">Appel gratuit d&apos;abord</a>
           </div>
         </div>

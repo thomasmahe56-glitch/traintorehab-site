@@ -16,7 +16,7 @@ export async function generateMetadata({
   const data = PRODUCTS[product as ProductKey]
   if (!data) return {}
   return {
-    title: `Checkout — ${data.name}`,
+    title: `Checkout, ${data.name}`,
     description: data.desc,
   }
 }

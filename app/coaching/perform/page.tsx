@@ -227,8 +227,8 @@ export default function PerformPage() {
           <h2 className="h2">Tu n’as pas besoin d’un plan de plus. Tu as besoin du bon <em style={{ WebkitTextStrokeColor: '#FEFEFE' }}>format.</em></h2>
           <p className="cta-sub">Commence directement par le forfait adapté, ou réserve un appel si tu veux valider le choix avant de démarrer.</p>
           <div className="cta-actions">
-            <a href={coachingCheckoutUrl} className="btn-white">Coaching — 199€/mois</a>
-            <a href={autonomeCheckoutUrl} className="btn-ghost">Autonome — 89€/mois</a>
+            <a href={coachingCheckoutUrl} className="btn-white">Coaching, 199€/mois</a>
+            <a href={autonomeCheckoutUrl} className="btn-ghost">Autonome, 89€/mois</a>
           </div>
         </div>
       </section>

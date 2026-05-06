@@ -19,7 +19,7 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: {
-    default: "TrainToRehab — Coaching running & rééducation",
+    default: "TrainToRehab, coaching running & rééducation",
     template: "%s | TrainToRehab",
   },
   description:

@@ -196,7 +196,7 @@ export default function PerformAutonomePage() {
           <h1 className="a-title">Tu veux progresser.<br />Mais garder la <em>main.</em></h1>
           <p className="a-sub">Un plan d’entraînement structuré sur un mois, pensé pour ton profil, ton objectif et tes contraintes. Sans suivi coach, mais avec une logique claire derrière chaque séance.</p>
           <div className="a-ctas">
-            <a href={checkoutUrl} className="btn-a-white">Démarrer — 89€/mois</a>
+            <a href={checkoutUrl} className="btn-a-white">Démarrer, 89€/mois</a>
             <a href="/coaching/perform-coaching" className="btn-a-ghost">Comparer avec le coaching</a>
           </div>
         </div>
@@ -293,11 +293,11 @@ export default function PerformAutonomePage() {
           <h2 className="a-h2">Choisis selon ton besoin de <em>retour.</em></h2>
           <div className="compare">
             <div className="compare-card featured">
-              <h3>Autonome — 89€/mois</h3>
+              <h3>Autonome, 89€/mois</h3>
               <p>Tu veux un plan clair, tu sais t’organiser, et tu n’as pas besoin d’échanges réguliers. Tu suis la structure, tu apprends la logique, tu avances seul.</p>
             </div>
             <div className="compare-card">
-              <h3>Coaching — 199€/mois</h3>
+              <h3>Coaching, 199€/mois</h3>
               <p>Tu veux des ajustements selon tes retours, un contact direct, et un regard extérieur chaque semaine. Le plan évolue avec ce que tu vis réellement.</p>
             </div>
           </div>
@@ -325,7 +325,7 @@ export default function PerformAutonomePage() {
           <h2 className="a-h2">Un mois clair vaut mieux que six semaines de <em style={{ WebkitTextStrokeColor: '#FEFEFE' }}>bricolage.</em></h2>
           <p className="cta-sub">TrainToPerform Autonome te donne une structure exploitable tout de suite, sans t’enfermer dans un accompagnement dont tu n’as pas forcément besoin.</p>
           <div className="a-ctas" style={{ justifyContent: 'center', position: 'relative' }}>
-            <a href={checkoutUrl} className="btn-a-white">Démarrer — 89€/mois</a>
+            <a href={checkoutUrl} className="btn-a-white">Démarrer, 89€/mois</a>
             <Link href="/coaching/perform-coaching" className="btn-a-ghost">Voir le coaching complet</Link>
           </div>
         </div>

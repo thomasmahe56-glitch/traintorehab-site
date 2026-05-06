@@ -69,7 +69,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-body text-xs text-gray-mid">
-            © {new Date().getFullYear()} TrainToRehab — Thomas Mahé. Tous
+            © {new Date().getFullYear()} TrainToRehab, Thomas Mahé. Tous
             droits réservés.
           </p>
           <p className="font-body text-xs text-gray-mid">

@@ -32,28 +32,28 @@ export default function RestartPage() {
     'Cadre de reprise personnalisé & évolutif',
     'Suivi hebdomadaire par message',
     'Appel mensuel de bilan (45 min)',
-    'Accès direct à Thomas — pas une équipe',
+    'Accès direct à Thomas, pas une équipe',
     'Réponses sous 24h en semaine',
   ]
 
   const steps = [
     { l: 'S1', t: 'On pose le diagnostic ensemble', d: "Appel de 45 minutes. On passe en revue ta blessure, ton historique d'entraînement, ton objectif. Je te dis ce que j'observe et ce qu'on va travailler. Pas de vague. Pas de jargon. Des faits." },
     { l: 'S2', t: 'On construit ton cadre de reprise', d: "Je te transmets une logique de reprise : les zones d'entraînement adaptées à ta phase de guérison, les signaux à surveiller, les règles de décision pour chaque sortie. Tu sais pourquoi on fait quoi." },
-    { l: 'S3', t: 'Tu cours. On ajuste.', d: "Chaque semaine, tu me fais un retour rapide sur ce que tu as ressenti. Je lis. J'ajuste. Je réponds. Pas un chatbot — moi, directement." },
-    { l: 'S4', t: 'Appel de bilan mensuel', d: "On fait le point à la fin de chaque mois. On mesure la progression. Et progressivement, tu as besoin de moins de moi — c'est le signe que ça fonctionne." },
+    { l: 'S3', t: 'Tu cours. On ajuste.', d: "Chaque semaine, tu me fais un retour rapide sur ce que tu as ressenti. Je lis. J'ajuste. Je réponds. Pas un chatbot : moi, directement." },
+    { l: 'S4', t: 'Appel de bilan mensuel', d: "On fait le point à la fin de chaque mois. On mesure la progression. Et progressivement, tu as besoin de moins de moi. C'est le signe que ça fonctionne." },
   ]
 
   const fortoi = [
-    { n: '01', t: "Tu as une blessure depuis plus de 6 semaines et tu ne sais plus à quel protocole te fier. Tu as essayé plusieurs choses — rien ne tient dans le temps.", d: 'stagger-1' },
-    { n: '02', t: "Tu as un objectif dans 3 à 6 mois — marathon, trail, compétition. La blessure est là, mais tu n'es pas prêt à abandonner. Tu cherches comment reprendre intelligemment.", d: 'stagger-2' },
-    { n: '03', t: "Tu cours régulièrement depuis plusieurs années. Tu n'es pas débutant. Tu veux comprendre — pas juste suivre une feuille d'exercices sans explications.", d: 'stagger-3' },
+    { n: '01', t: "Tu as une blessure depuis plus de 6 semaines et tu ne sais plus à quel protocole te fier. Tu as essayé plusieurs choses, rien ne tient dans le temps.", d: 'stagger-1' },
+    { n: '02', t: "Tu as un objectif dans 3 à 6 mois : marathon, trail, compétition. La blessure est là, mais tu n'es pas prêt à abandonner. Tu cherches comment reprendre intelligemment.", d: 'stagger-2' },
+    { n: '03', t: "Tu cours régulièrement depuis plusieurs années. Tu n'es pas débutant. Tu veux comprendre, pas juste suivre une feuille d'exercices sans explications.", d: 'stagger-3' },
     { n: '04', t: "Tu en as assez de consulter des gens qui ne courent pas et qui ne comprennent pas ce que tu ressens quand tu dois annuler une sortie. Tu veux parler à quelqu'un qui sait ce que ça fait.", d: 'stagger-4' },
   ]
 
   const testimonials = [
-    { t: "Ça fait deux ans que j'ai une tendinopathie au tendon d'Achille. J'ai vu trois kinés, suivi deux protocoles différents — ça s'améliorait puis ça revenait. Avec Thomas, en 6 semaines j'ai compris pourquoi ça revenait systématiquement. J'ai couru mon premier 10km en 8 mois sans douleur le mois dernier.", m: "Julien, 34 ans · Tendinopathie achilléenne · 6 semaines", d: 'stagger-1' },
+    { t: "Ça fait deux ans que j'ai une tendinopathie au tendon d'Achille. J'ai vu trois kinés, suivi deux protocoles différents. Ça s'améliorait puis ça revenait. Avec Thomas, en 6 semaines j'ai compris pourquoi ça revenait systématiquement. J'ai couru mon premier 10km en 8 mois sans douleur le mois dernier.", m: "Julien, 34 ans · Tendinopathie achilléenne · 6 semaines", d: 'stagger-1' },
     { t: "Ce que j'appréciais avec Thomas, c'est qu'il m'expliquait toujours le pourquoi. Pas juste 'fais ça'. Pourquoi ce volume cette semaine, pourquoi on lève le pied là. J'avais un syndrome rotulien depuis 4 mois, j'ai repris l'entraînement complet en 10 semaines et je prépare un trail 50km en juin.", m: "Mathieu, 39 ans · Syndrome rotulien · 10 semaines", d: 'stagger-2' },
-    { t: "J'avais peur de reprendre. Pas à cause de la douleur — à cause de la peur de me reblesser. Thomas m'a donné un cadre clair pour décider quand pousser et quand m'arrêter. Cette clarté a tout changé. En 2 mois j'ai retrouvé mon niveau d'avant blessure. Sans douleur.", m: "Sarah, 31 ans · Périostite tibiale · 8 semaines", d: 'stagger-3' },
+    { t: "J'avais peur de reprendre. Pas à cause de la douleur, à cause de la peur de me reblesser. Thomas m'a donné un cadre clair pour décider quand pousser et quand m'arrêter. Cette clarté a tout changé. En 2 mois j'ai retrouvé mon niveau d'avant blessure. Sans douleur.", m: "Sarah, 31 ans · Périostite tibiale · 8 semaines", d: 'stagger-3' },
   ]
 
   return (
@@ -270,9 +270,9 @@ export default function RestartPage() {
           <p className="s-ey">Ce que tu vis</p>
           <h2 className="s-ti">Ce n&apos;est pas dans <em>ta tête.</em></h2>
           <div className="prose">
-            <p>Tu t&apos;entraînes depuis trois ans. Tu connais ton corps. Tu sais quand pousser et quand lever le pied — ou tu croyais le savoir. Et puis cette douleur est apparue. Tendon, genou, périoste. Tu as attendu. Tu as vu un kiné, un médecin, un ostéo. Ça allait mieux. Et puis ça est revenu.</p>
+            <p>Tu t&apos;entraînes depuis trois ans. Tu connais ton corps. Tu sais quand pousser et quand lever le pied, ou tu croyais le savoir. Et puis cette douleur est apparue. Tendon, genou, périoste. Tu as attendu. Tu as vu un kiné, un médecin, un ostéo. Ça allait mieux. Et puis ça est revenu.</p>
             <p>Aujourd&apos;hui tu cours avec la peur au ventre. Chaque sortie ressemble à une négociation. Tu surveilles la douleur comme un indice boursier. Le marathon dans quatre mois est toujours là, mais il commence à ressembler à un défi impossible.</p>
-            <p>Ce qui te ronge, c&apos;est l&apos;incertitude. Pas la douleur elle-même — tu l&apos;as appris à gérer. C&apos;est de ne pas savoir. Et en dessous, une peur que tu n&apos;oses pas toujours formuler : et si tu perdais ta condition pendant la reprise ?</p>
+            <p>Ce qui te ronge, c&apos;est l&apos;incertitude. Pas la douleur elle-même, tu l&apos;as appris à gérer. C&apos;est de ne pas savoir. Et en dessous, une peur que tu n&apos;oses pas toujours formuler : et si tu perdais ta condition pendant la reprise ?</p>
           </div>
           <span className="bridge">Ce cycle a une cause précise. Et elle n&apos;est pas ce que tu crois. →</span>
         </div>
@@ -298,11 +298,11 @@ export default function RestartPage() {
           <p className="s-ey">Ce qui manque</p>
           <h2 className="s-ti">Un cadre. <em>Pas</em> un plan.</h2>
           <div className="prose">
-            <p>Un plan figé ne peut pas s&apos;adapter à ce que ton corps fait semaine après semaine. Un cadre, si. La différence : le cadre t&apos;explique les règles du jeu pour que tu puisses prendre des décisions par toi-même. L&apos;objectif, c&apos;est ton autonomie — pas ta dépendance.</p>
+            <p>Un plan figé ne peut pas s&apos;adapter à ce que ton corps fait semaine après semaine. Un cadre, si. La différence : le cadre t&apos;explique les règles du jeu pour que tu puisses prendre des décisions par toi-même. L&apos;objectif, c&apos;est ton autonomie, pas ta dépendance.</p>
             <p>TrainToRestart, c&apos;est un accompagnement mensuel où on construit ensemble une logique de reprise adaptée à ta blessure, à ta morphologie et à ton objectif. On regarde chaque semaine ce qui s&apos;est passé. On ajuste. On avance.</p>
             <p>Je ne promets pas que tu seras guéri en 30 jours. Je promets que dans 30 jours, tu comprends ce qui se passe dans ton corps, tu sais comment réagir à la douleur, et tu cours sans avoir peur de chaque foulée.</p>
           </div>
-          <span className="bridge">Mais avant ça — voyons si c&apos;est fait pour toi. →</span>
+          <span className="bridge">Mais avant ça, voyons si c&apos;est fait pour toi. →</span>
         </div>
       </section>
 
@@ -405,7 +405,7 @@ export default function RestartPage() {
           <p className="s-ey">Ce qui est inclus</p>
           <h2 className="s-ti">Tout ce qu&apos;il faut. <em>Rien</em> de superflu.</h2>
           <div className="inclus-grid">
-            {['Appel diagnostic 45 min en visio','Appel mensuel de bilan (45 min)','Cadre de reprise personnalisé et évolutif','Suivi hebdomadaire par message','Réponses sous 24h en semaine','Accès direct à Thomas — pas une équipe'].map(item => (
+            {['Appel diagnostic 45 min en visio','Appel mensuel de bilan (45 min)','Cadre de reprise personnalisé et évolutif','Suivi hebdomadaire par message','Réponses sous 24h en semaine','Accès direct à Thomas, pas une équipe'].map(item => (
               <div key={item} className="inclus-item"><div className="inclus-dot" /><p>{item}</p></div>
             ))}
           </div>
@@ -415,7 +415,7 @@ export default function RestartPage() {
             <p className="s-ey">Qui je suis</p>
             <h2 className="s-ti">Thomas Mahé</h2>
             <p>Je suis kinésithérapeute diplômé d&apos;État et je travaille exclusivement avec des coureurs depuis cinq ans. J&apos;ai un cabinet à Saint-Raphaël et un programme de coaching en ligne, TrainToRehab. Les deux sont volontairement connectés : ce que je vois en cabinet alimente ce que je fais en coaching, et inversement.</p>
-            <p>Ce qui m&apos;intéresse, c&apos;est la zone grise entre la rééducation et l&apos;entraînement — l&apos;endroit où personne n&apos;est vraiment compétent à la fois. La plupart des kinés ne courent pas. La plupart des coachs ne savent pas lire une blessure. J&apos;essaie d&apos;occuper cet espace.</p>
+            <p>Ce qui m&apos;intéresse, c&apos;est la zone grise entre la rééducation et l&apos;entraînement : l&apos;endroit où personne n&apos;est vraiment compétent à la fois. La plupart des kinés ne courent pas. La plupart des coachs ne savent pas lire une blessure. J&apos;essaie d&apos;occuper cet espace.</p>
             <p className="anti-promise">&quot;Je ne promets pas de magie. Je pose un cadre clair. Et je t&apos;explique chaque décision pour que tu puisses te passer de moi.&quot;</p>
           </div>
         </div>

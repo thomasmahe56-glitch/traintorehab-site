@@ -37,15 +37,15 @@ export default function CoachingPage() {
   const faqs = [
     {
       q: "Est-ce que c'est vraiment différent d'un plan d'entraînement classique ?",
-      a: "Un plan classique est figé — il ne sait pas que tu as mal au genou ce mardi, ni que tu as dormi 5h. Le coaching TTR s'adapte à ce que tu vis réellement. Et surtout, tu comprends la logique derrière chaque décision, ce qui te permet de t'ajuster toi-même sur le long terme."
+      a: "Un plan classique est figé. Il ne sait pas que tu as mal au genou ce mardi, ni que tu as dormi 5h. Le coaching TTR s'adapte à ce que tu vis réellement. Et surtout, tu comprends la logique derrière chaque décision, ce qui te permet de t'ajuster toi-même sur le long terme."
     },
     {
       q: "Je suis déjà suivi par un kiné. Est-ce compatible ?",
-      a: "Oui, dans la grande majorité des cas. Le coaching TTR s'intègre à un suivi existant — il ne le remplace pas, il lui donne une cohérence côté entraînement. Si tu as un doute sur ta situation spécifique, on en parle lors de l'appel de clarification."
+      a: "Oui, dans la grande majorité des cas. Le coaching TTR s'intègre à un suivi existant. Il ne le remplace pas, il lui donne une cohérence côté entraînement. Si tu as un doute sur ta situation spécifique, on en parle lors de l'appel de clarification."
     },
     {
       q: "Combien de temps faut-il avant de voir des résultats ?",
-      a: "La clarté arrive souvent dès les premières semaines — tu sais quoi faire et pourquoi, ce qui réduit le stress lié aux décisions. Les résultats physiques dépendent de ta situation de départ, mais la plupart des personnes vivent un changement significatif dans les 4 à 8 semaines."
+      a: "La clarté arrive souvent dès les premières semaines : tu sais quoi faire et pourquoi, ce qui réduit le stress lié aux décisions. Les résultats physiques dépendent de ta situation de départ, mais la plupart des personnes vivent un changement significatif dans les 4 à 8 semaines."
     },
     {
       q: "Puis-je changer de formule en cours de suivi ?",
@@ -53,7 +53,7 @@ export default function CoachingPage() {
     },
     {
       q: "Y a-t-il un engagement minimum ?",
-      a: "Les formules mensuelles sont sans engagement — tu peux arrêter à tout moment. Cela dit, les résultats durables se construisent sur plusieurs mois. Je recommande de s'engager mentalement sur 3 mois minimum pour que le travail ait du sens."
+      a: "Les formules mensuelles sont sans engagement. Tu peux arrêter à tout moment. Cela dit, les résultats durables se construisent sur plusieurs mois. Je recommande de s'engager mentalement sur 3 mois minimum pour que le travail ait du sens."
     }
   ]
 
@@ -225,8 +225,8 @@ export default function CoachingPage() {
         .faq-item {
           border-bottom: 1px solid rgba(255,255,255,0.1);
           overflow: hidden;
-          opacity: 0;
-          transform: translateY(12px);
+          opacity: 1;
+          transform: translateY(0);
           transition: opacity 0.5s ease, transform 0.5s ease;
         }
         .faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
@@ -301,7 +301,7 @@ export default function CoachingPage() {
           <em>Pas</em> un plan.
         </h1>
         <p className="hero-sub">
-          Tu es blessé et tu veux reprendre. Ou tu cours déjà et tu veux progresser. Dans les deux cas, il te faut un cadre clair — pas un protocole de plus à suivre aveuglément.
+          Tu es blessé et tu veux reprendre. Ou tu cours déjà et tu veux progresser. Dans les deux cas, il te faut un cadre clair, pas un protocole de plus à suivre aveuglément.
         </p>
 
         <div className="bifurcation">
@@ -357,7 +357,7 @@ export default function CoachingPage() {
         <div className="reveal">
           <p className="section-eyebrow">Prochaine étape</p>
           <h2 className="cta-title">Pas sûr de<br />l&apos;option <em>la plus adaptée</em> ?</h2>
-          <p className="cta-sub">Réserve un appel de 15 min. Je t&apos;oriente honnêtement — ou je te dis que ce n&apos;est pas le bon moment.</p>
+          <p className="cta-sub">Réserve un appel de 15 min. Je t&apos;oriente honnêtement, ou je te dis que ce n&apos;est pas le bon moment.</p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
             <a href="https://calendly.com/traintorehab/traintorehab-thomas-mahe" className="btn-navy">Réserver l&apos;appel gratuit</a>
             <Link href="/coaching" className="btn-outline-navy">Voir toutes les offres</Link>

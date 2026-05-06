@@ -27,7 +27,7 @@ export default function FormationPage() {
           flex-direction: column;
         }
 
-        /* NAV spécifique formation — fond navy */
+        /* NAV spécifique formation, fond navy */
         .formation-nav {
           padding: 24px 48px;
           display: flex;
@@ -219,7 +219,7 @@ export default function FormationPage() {
       `}</style>
 
       <div className="formation-body">
-        {/* NAV formation — remplace le layout global */}
+        {/* NAV formation, remplace le layout global */}
         <nav className="formation-nav">
           <Link href="/" className="formation-logo">TrainToRehab</Link>
           <Link href="/" className="formation-back">← Retour à l&apos;accueil</Link>
