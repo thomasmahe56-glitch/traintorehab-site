@@ -15,38 +15,136 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-navy/95 backdrop-blur-sm border-b border-white/10">
-      <nav
-        className="container-ttr flex items-center justify-between"
-        style={{ height: "var(--nav-height)" }}
-      >
+    <header className="ttr-navbar">
+      <style>{`
+        .ttr-navbar {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 50;
+          background: rgba(7, 2, 101, 0.96);
+          backdrop-filter: blur(8px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ttr-navbar-inner {
+          max-width: 1152px;
+          width: 100%;
+          height: var(--nav-height);
+          margin: 0 auto;
+          padding: 0 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .ttr-navbar-logo {
+          font-family: var(--font-heading);
+          color: #FEFEFE;
+          font-size: 28px;
+          line-height: 1;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+        .ttr-navbar-logo:hover { color: #E8E7E3; }
+        .ttr-navbar-links {
+          list-style: none;
+          display: flex;
+          align-items: center;
+          gap: 32px;
+          margin: 0;
+          padding: 0;
+        }
+        .ttr-navbar-link {
+          position: relative;
+          color: #E8E7E3;
+          font-family: var(--font-body);
+          font-size: 15px;
+          font-weight: 500;
+          letter-spacing: 0.01em;
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+        .ttr-navbar-link:hover,
+        .ttr-navbar-link.active { color: #FEFEFE; }
+        .ttr-navbar-link::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -6px;
+          width: 0;
+          height: 1px;
+          background: #FEFEFE;
+          transition: width 0.25s ease;
+        }
+        .ttr-navbar-link:hover::after,
+        .ttr-navbar-link.active::after { width: 100%; }
+        .ttr-navbar-menu-button {
+          display: none;
+          width: 40px;
+          height: 40px;
+          border: 0;
+          background: transparent;
+          color: #FEFEFE;
+          padding: 8px;
+          cursor: pointer;
+        }
+        .ttr-navbar-menu-lines {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .ttr-navbar-menu-lines span {
+          display: block;
+          width: 24px;
+          height: 2px;
+          background: currentColor;
+          transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        .ttr-navbar-menu-lines.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .ttr-navbar-menu-lines.open span:nth-child(2) { opacity: 0; }
+        .ttr-navbar-menu-lines.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        .ttr-navbar-mobile {
+          display: none;
+          border-top: 1px solid rgba(255,255,255,0.1);
+          background: #070265;
+        }
+        .ttr-navbar-mobile.open { display: block; }
+        .ttr-navbar-mobile ul {
+          list-style: none;
+          margin: 0;
+          padding: 16px 24px 20px;
+          display: grid;
+          gap: 14px;
+        }
+        @media (max-width: 767px) {
+          .ttr-navbar-links { display: none; }
+          .ttr-navbar-menu-button { display: block; }
+          .ttr-navbar-logo { font-size: 24px; }
+        }
+      `}</style>
+      <nav className="ttr-navbar-inner">
         {/* Logo */}
         <Link
           href="/"
-          className="font-heading text-white text-2xl tracking-widest hover:text-gray-light transition-colors"
+          className="ttr-navbar-logo"
           onClick={() => setMenuOpen(false)}
         >
           TrainToRehab
         </Link>
 
         {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="ttr-navbar-links">
           {links.map(({ label, href }) => {
             const active = pathname === href || pathname.startsWith(href + "/");
             return (
               <li key={href}>
                 <Link
                   href={href}
-                  className={`font-body text-sm font-medium tracking-wide transition-colors relative group ${
-                    active ? "text-white" : "text-gray-light hover:text-white"
-                  }`}
+                  className={`ttr-navbar-link${active ? " active" : ""}`}
                 >
                   {label}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-px bg-white transition-all duration-300 ${
-                      active ? "w-full" : "w-0 group-hover:w-full"
-                    }`}
-                  />
                 </Link>
               </li>
             );
@@ -55,36 +153,22 @@ export default function Navbar() {
 
         {/* Burger mobile */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2 text-white"
+          className="ttr-navbar-menu-button"
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Menu"
           aria-expanded={menuOpen}
         >
-          <span
-            className={`block w-6 h-0.5 bg-current transition-transform duration-300 origin-center ${
-              menuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-current transition-opacity duration-300 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block w-6 h-0.5 bg-current transition-transform duration-300 origin-center ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
-          />
+          <span className={`ttr-navbar-menu-lines${menuOpen ? " open" : ""}`}>
+            <span />
+            <span />
+            <span />
+          </span>
         </button>
       </nav>
 
       {/* Mobile menu */}
-      <div
-        className={`md:hidden bg-navy border-t border-white/10 overflow-hidden transition-all duration-300 ${
-          menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
-        }`}
-      >
-        <ul className="flex flex-col px-4 py-4 gap-4">
+      <div className={`ttr-navbar-mobile${menuOpen ? " open" : ""}`}>
+        <ul>
           {links.map(({ label, href }) => {
             const active = pathname === href || pathname.startsWith(href + "/");
             return (
@@ -92,9 +176,7 @@ export default function Navbar() {
                 <Link
                   href={href}
                   onClick={() => setMenuOpen(false)}
-                  className={`font-body text-base font-medium block py-1 transition-colors ${
-                    active ? "text-white" : "text-gray-light hover:text-white"
-                  }`}
+                  className={`ttr-navbar-link${active ? " active" : ""}`}
                 >
                   {label}
                 </Link>

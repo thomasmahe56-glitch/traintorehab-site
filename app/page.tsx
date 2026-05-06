@@ -117,7 +117,7 @@ export default function HomePage() {
         }
         .hero-title {
           font-family: var(--font-heading);
-          font-size: clamp(52px, 6vw, 88px);
+          font-size: clamp(48px, 5.2vw, 76px);
           line-height: 0.92;
           color: #FEFEFE;
           letter-spacing: 0.01em;
@@ -127,6 +127,7 @@ export default function HomePage() {
         }
         .hero-title em {
           font-style: normal;
+          font-size: 0.84em;
           color: transparent;
           -webkit-text-stroke: 1.5px #FEFEFE;
           opacity: 0.6;
@@ -562,19 +563,19 @@ export default function HomePage() {
       {/* HERO */}
       <section className="hero">
         <div className="hero-left">
-          <p className="hero-eyebrow">Kinésithérapeute · Coach course à pied</p>
+          <p className="hero-eyebrow">Coaching course à pied · En ligne</p>
           <h1 className="hero-title">
-            Courir<br />
-            <em>sans</em><br />
-            subir
+            Reprends<br />
+            la course.<br />
+            <em>Cette fois, sans te reblesser.</em>
           </h1>
           <p className="hero-sub">
-            Tu cours régulièrement. Mais <strong>la douleur revient</strong>, la progression stagne, ou tu n&apos;oses plus pousser.<br /><br />
-            Il ne manque pas de volonté. Il manque <strong>un cadre clair</strong>.
+            Tu es blessé et tu veux reprendre en sécurité, ou tu cours sans douleur et tu veux progresser vraiment.<br /><br />
+            Dans les deux cas, il te faut <strong>un accompagnement qui s&apos;adapte à toi</strong>.
           </p>
           <div className="hero-ctas">
-            <Link href="#offres" className="btn-white">Voir les offres</Link>
-            <a href="https://calendly.com/traintorehab/traintorehab-thomas-mahe" className="btn-ghost">Appel gratuit 15 min</a>
+            <a href="https://calendly.com/traintorehab/traintorehab-thomas-mahe" className="btn-white">Réserver l&apos;appel gratuit, 15 min</a>
+            <Link href="#offres" className="btn-ghost">Voir les offres</Link>
           </div>
         </div>
         <div className="hero-right">
@@ -611,7 +612,7 @@ export default function HomePage() {
             Le vrai problème, c&apos;est de <strong>ne plus savoir quoi faire</strong>, quand, ni pourquoi.
           </p>
           <ul className="problem-list">
-            <li><span className="problem-dot" />Tu as déjà consulté — kiné, médecin, exercices, repos — et quelque chose ne tient pas dans le temps</li>
+            <li><span className="problem-dot" />Tu as déjà consulté : kiné, médecin, exercices, repos. Et quelque chose ne tient pas dans le temps</li>
             <li><span className="problem-dot" />Tu cours régulièrement mais tu butes contre un plafond invisible</li>
             <li><span className="problem-dot" />Tu es fatigué de tester au hasard et de recommencer le même cycle</li>
           </ul>
@@ -644,17 +645,17 @@ export default function HomePage() {
         <div className="offers-header reveal">
           <div>
             <p className="section-eyebrow">Les offres</p>
-            <h2 className="section-title">Un cadre.<br /><em>Trois</em> formats.</h2>
+            <h2 className="section-title">Un cadre.<br /><em>Pas</em> un plan.</h2>
           </div>
           <p style={{ maxWidth: '320px', fontSize: '15px', fontWeight: 300, color: '#9B9A96', lineHeight: 1.6, textAlign: 'right' }}>
-            La structure est la même.<br />La différence est le niveau d&apos;accompagnement et ta situation.
+            Pas sûr ? L&apos;appel de 15 min sert à ça : je t&apos;oriente honnêtement.
           </p>
         </div>
         <div className="offers-grid">
           {[
-            { tag: 'Blessure & douleur', name: 'TrainToRestart', desc: "Tu reviens de blessure ou tu as des douleurs chroniques. On pose un cadre clair pour reprendre avec méthode — pas au hasard.", price: '199', href: '/coaching/restart', featured: false },
-            { tag: 'Performance accompagnée', name: 'TrainToPerform Coaching', desc: "Tu cours sans douleur et tu veux progresser. Un plan vivant, ajusté chaque semaine selon tes retours. Contact direct coach.", price: '199', href: '/coaching/perform#coaching', featured: true },
-            { tag: 'Performance autonome', name: 'TrainToPerform Autonome', desc: "Un plan structuré sur un mois, conçu pour ton profil. Tu t'entraînes en toute indépendance avec une logique claire derrière chaque séance.", price: '89', href: '/coaching/perform#autonome', featured: false },
+            { tag: 'Tu as une douleur ou tu veux reprendre en sécurité ?', name: 'TrainToRestart', desc: "Blessure, reprise, douleurs chroniques. On pose un cadre clair pour reprendre avec méthode, sans repartir au hasard.", price: '199', href: '/coaching/restart', featured: false },
+            { tag: 'Tu cours sans douleur et tu veux aller plus loin ?', name: 'TrainToPerform Coaching', desc: "Performance accompagnée. Un plan vivant, ajusté chaque semaine selon tes retours, avec un contact direct coach.", price: '199', href: '/coaching/perform#coaching', featured: true },
+            { tag: 'Tu veux progresser avec un cadre plus autonome ?', name: 'TrainToPerform Autonome', desc: "Performance autonome. Un plan structuré, conçu pour ton profil, avec une logique claire derrière chaque séance.", price: '89', href: '/coaching/perform#autonome', featured: false },
           ].map((offer, i) => (
             <div key={offer.name} className={`offer-card${offer.featured ? ' featured' : ''} stagger-${i + 1}`}>
               <p className="offer-tag">{offer.tag}</p>
@@ -678,8 +679,8 @@ export default function HomePage() {
         </div>
         <div className="testimonials">
           {[
-            { initials: 'AM', name: 'Antoine M.', meta: 'Marathon Paris · TrainToRestart', text: "Après 2 ans de tendinopathie d'Achille, j'avais perdu confiance. En 8 semaines avec Thomas, j'ai compris pourquoi ça revenait — et comment ne plus en avoir peur.", delay: 'stagger-1' },
-            { initials: 'SL', name: 'Sophie L.', meta: 'Trail 50km · TrainToPerform Coaching', text: "J'avais un plateau depuis 18 mois. Le coaching a remis de la cohérence dans mes semaines — pas plus de volume, juste mieux organisé. Sub-3h30 au bout de 4 mois.", delay: 'stagger-2' },
+            { initials: 'AM', name: 'Antoine M.', meta: 'Marathon Paris · TrainToRestart', text: "Après 2 ans de tendinopathie d'Achille, j'avais perdu confiance. En 8 semaines avec Thomas, j'ai compris pourquoi ça revenait, et comment ne plus en avoir peur.", delay: 'stagger-1' },
+            { initials: 'SL', name: 'Sophie L.', meta: 'Trail 50km · TrainToPerform Coaching', text: "J'avais un plateau depuis 18 mois. Le coaching a remis de la cohérence dans mes semaines : pas plus de volume, juste mieux organisé. Sub-3h30 au bout de 4 mois.", delay: 'stagger-2' },
             { initials: 'JB', name: 'Julien B.', meta: '10km / Semi · TrainToPerform Autonome', text: "Ce que j'apprécie : Thomas explique le pourquoi de chaque choix. Je ne suis pas un plan aveuglément. Je comprends ce que je fais et je peux l'adapter moi-même.", delay: 'stagger-3' },
           ].map((t) => (
             <div key={t.name} className={`testimonial reveal ${t.delay}`}>
@@ -714,10 +715,10 @@ export default function HomePage() {
             TrainToRehab est né d&apos;un constat simple : <strong>la rééducation et l&apos;entraînement ne devraient pas être deux mondes séparés.</strong>
           </p>
           <div className="credentials">
-            <div className="credential">Kinésithérapeute DE — cabinet à Saint-Raphaël</div>
+            <div className="credential">Kinésithérapeute DE, cabinet à Saint-Raphaël</div>
             <div className="credential">Spécialisé traumatologie, orthopédie, course à pied</div>
             <div className="credential">+200 coureurs accompagnés en ligne</div>
-            <div className="credential">Fondateur TrainToRehab — 13 000 abonnés Instagram</div>
+            <div className="credential">Fondateur TrainToRehab, 13 000 abonnés Instagram</div>
           </div>
           <a href="https://calendly.com/traintorehab/traintorehab-thomas-mahe" className="btn-white-solid">
             Réserver un appel gratuit
@@ -733,7 +734,7 @@ export default function HomePage() {
             Un appel.<br /><em>15 minutes.</em><br />Sans engagement.
           </h2>
           <p className="cta-sub">
-            On fait le point sur ta situation. Je t&apos;oriente vers l&apos;option la plus adaptée — ou je te dis honnêtement que ce n&apos;est pas le bon moment.
+            On fait le point sur ta situation. Je t&apos;oriente vers l&apos;option la plus adaptée, ou je te dis honnêtement que ce n&apos;est pas le bon moment.
           </p>
           <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
             <a href="https://calendly.com/traintorehab/traintorehab-thomas-mahe" className="btn-white">Réserver l&apos;appel gratuit</a>
