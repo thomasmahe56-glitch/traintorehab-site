@@ -118,6 +118,7 @@ export default function RestartPage() {
 
         /* MÉTHODE : off-white */
         .methode-sec { padding: 96px 80px; background: #F4F3F0; }
+        .methode-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr); gap: 72px; align-items: start; }
         .methode-steps { margin-top: 48px; max-width: 680px; }
         .methode-step { display: flex; gap: 28px; padding: 28px 0; border-bottom: 1px solid #E8E7E3; transition: padding-left 0.3s; }
         .methode-step:last-child { border-bottom: none; }
@@ -126,6 +127,33 @@ export default function RestartPage() {
         .methode-step:hover .step-lbl { color: #070265; }
         .step-ti { font-size: 16px; font-weight: 600; color: #070265; margin-bottom: 8px; }
         .step-de { font-size: 14px; font-weight: 300; color: var(--ink); line-height: 1.7; }
+        .pricing-roadmap { background: #FEFEFE; border: 1px solid #E8E7E3; border-radius: 16px; padding: 32px; position: sticky; top: 96px; box-shadow: 0 18px 50px rgba(7,2,101,0.06); }
+        .road-ey { font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #9B9A96; margin-bottom: 6px; }
+        .road-title { font-size: 18px; font-weight: 700; color: #070265; line-height: 1.3; margin-bottom: 32px; }
+        .road-timeline { position: relative; }
+        .road-line { position: absolute; left: 19px; top: 40px; width: 2px; height: 64px; background: #E8E7E3; }
+        .road-step { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 14px; }
+        .road-dot { width: 40px; height: 40px; border-radius: 50%; background: #070265; color: #FEFEFE; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; flex-shrink: 0; position: relative; z-index: 1; }
+        .road-main-card { flex: 1; background: #FEFEFE; border: 1px solid #E8E7E3; border-radius: 12px; padding: 16px; display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+        .road-card-title { font-size: 14px; font-weight: 700; color: #070265; margin-bottom: 6px; }
+        .road-card-copy { font-size: 12px; color: #6E6B66; line-height: 1.55; }
+        .road-pill { display: inline-flex; align-items: center; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+        .road-pill.navy { background: #070265; color: #FEFEFE; }
+        .road-split { display: flex; gap: 20px; align-items: center; margin: 0 0 16px 2px; }
+        .road-arrow { width: 36px; display: flex; justify-content: center; color: #9B9A96; flex-shrink: 0; }
+        .road-split p { font-size: 12px; color: #9B9A96; font-style: italic; }
+        .road-branches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-left: 56px; }
+        .road-branch { position: relative; background: #FEFEFE; border: 1px solid #E8E7E3; border-radius: 12px; padding: 22px 16px 16px; }
+        .road-badge { position: absolute; top: -11px; left: 16px; border-radius: 999px; padding: 3px 10px; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; }
+        .road-badge.navy { background: #070265; color: #FEFEFE; }
+        .road-badge.green { background: #DCFCE7; color: #15803D; }
+        .road-branch h3 { font-size: 14px; font-weight: 700; color: #070265; margin-bottom: 8px; }
+        .road-branch p { font-size: 12px; color: #6E6B66; line-height: 1.55; margin-bottom: 14px; }
+        .road-pill.soft-navy { background: rgba(7,2,101,0.08); color: #070265; }
+        .road-pill.green { background: #F0FDF4; color: #15803D; }
+        .road-note { margin-top: 22px; padding-top: 18px; border-top: 1px solid #E8E7E3; display: flex; align-items: flex-start; gap: 10px; }
+        .road-note-icon { width: 16px; height: 16px; color: #9B9A96; flex-shrink: 0; margin-top: 2px; }
+        .road-note p { font-size: 12px; color: #6E6B66; font-style: italic; line-height: 1.55; }
 
         /* INCLUS + THOMAS : off-white */
         .inclus-thomas { padding: 64px 80px 96px; background: #F4F3F0; }
@@ -168,6 +196,40 @@ export default function RestartPage() {
         .stagger-1 { transition-delay: 0.1s; } .stagger-2 { transition-delay: 0.22s; }
         .stagger-3 { transition-delay: 0.34s; } .stagger-4 { transition-delay: 0.46s; }
 
+        @media (max-width: 980px) {
+          .methode-layout {
+            grid-template-columns: 1fr;
+            gap: 48px;
+          }
+          .pricing-roadmap {
+            position: relative;
+            top: auto;
+          }
+        }
+
+        @media (max-width: 720px) {
+          .methode-sec {
+            padding: 72px 28px;
+          }
+          .pricing-roadmap {
+            padding: 24px;
+          }
+          .road-main-card {
+            display: block;
+          }
+          .road-main-card .road-pill {
+            margin-top: 14px;
+          }
+          .road-branches {
+            grid-template-columns: 1fr;
+            margin-left: 0;
+            margin-top: 26px;
+          }
+          .road-split {
+            margin-bottom: 12px;
+          }
+        }
+
         @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
       `}</style>
 
@@ -183,21 +245,21 @@ export default function RestartPage() {
           <h1 className="r-title">Tu cours.<br />Tu te blesses.<br /><em>Tu recommences.</em></h1>
           <p className="r-sub">Il est temps de sortir de ce cycle. Pas avec des exercices de plus. Avec <strong>un cadre qui tient dans le temps</strong>.</p>
           <div className="r-ctas">
-            <a href="/checkout/restart" className="btn-wh">Commencer — 199€/mois</a>
+            <a href="/checkout/restart" className="btn-wh">Commencer le premier mois, 199€</a>
             <a href="#appel" className="btn-gh">Parler à Thomas d&apos;abord</a>
           </div>
-          <p className="r-note">Sans engagement · Résiliable à tout moment</p>
+          <p className="r-note">Mois 1 obligatoire · Puis accompagnement ou autonomie</p>
         </div>
         <div className="r-hero-right">
           <div className="r-price-card">
             <p className="r-plabel">TrainToRestart</p>
             <div className="r-pamount">199</div>
-            <p className="r-pperiod">€ / mois · sans engagement</p>
+            <p className="r-pperiod">€ · premier mois obligatoire</p>
             <ul className="r-pfeatures">
               {features.map(f => <li key={f}><span className="pf-chk" />{f}</li>)}
             </ul>
-            <a href="/checkout/restart" className="r-pcta">Commencer maintenant</a>
-            <p className="r-pnote">Sans engagement · Résiliable à tout moment</p>
+            <a href="/checkout/restart" className="r-pcta">Commencer le mois 1</a>
+            <p className="r-pnote">Puis 199€/mois accompagné ou 89€/mois autonome</p>
           </div>
         </div>
       </section>
@@ -262,17 +324,78 @@ export default function RestartPage() {
 
       {/* MÉTHODE : off-white */}
       <section className="methode-sec">
-        <div className="reveal">
-          <p className="s-ey">Comment ça se passe</p>
-          <h2 className="s-ti">Concret. <em>Semaine</em> par semaine.</h2>
-        </div>
-        <div className="methode-steps">
-          {steps.map((step, i) => (
-            <div key={step.l} className={`methode-step reveal stagger-${i + 1}`}>
-              <div className="step-lbl">{step.l}</div>
-              <div><h3 className="step-ti">{step.t}</h3><p className="step-de">{step.d}</p></div>
+        <div className="methode-layout">
+          <div>
+            <div className="reveal">
+              <p className="s-ey">Comment ça se passe</p>
+              <h2 className="s-ti">Concret. <em>Semaine</em> par semaine.</h2>
             </div>
-          ))}
+            <div className="methode-steps">
+              {steps.map((step, i) => (
+                <div key={step.l} className={`methode-step reveal stagger-${i + 1}`}>
+                  <div className="step-lbl">{step.l}</div>
+                  <div><h3 className="step-ti">{step.t}</h3><p className="step-de">{step.d}</p></div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="pricing-roadmap reveal">
+            <p className="road-ey">Comment ça fonctionne côté tarif</p>
+            <p className="road-title">Un premier mois obligatoire,<br />puis tu choisis ta voie.</p>
+
+            <div className="road-timeline">
+              <div className="road-line" />
+
+              <div className="road-step">
+                <div className="road-dot">1</div>
+                <div className="road-main-card">
+                  <div>
+                    <p className="road-card-title">Mois 1 : bilan, diagnostic &amp; protocole</p>
+                    <p className="road-card-copy">
+                      Appel initial, analyse de ta situation, construction du cadre personnalisé. Contact WhatsApp inclus.
+                    </p>
+                  </div>
+                  <span className="road-pill navy">199€ obligatoire</span>
+                </div>
+              </div>
+
+              <div className="road-split">
+                <div className="road-arrow" aria-hidden="true">
+                  <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8 0 L8 14 M3 9 L8 15 L13 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <p>À la fin du mois 1, tu choisis :</p>
+              </div>
+
+              <div className="road-branches">
+                <div className="road-branch">
+                  <span className="road-badge navy">VOIE A</span>
+                  <h3>Tu continues accompagné</h3>
+                  <p>Suivi mensuel, ajustements selon tes retours, contact coach WhatsApp maintenu.</p>
+                  <span className="road-pill soft-navy">199€ / mois</span>
+                </div>
+
+                <div className="road-branch">
+                  <span className="road-badge green">VOIE B</span>
+                  <h3>Tu passes en autonomie</h3>
+                  <p>Les bases sont posées. Plan mensuel sans contact coach, sans engagement.</p>
+                  <span className="road-pill green">89€ / mois</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="road-note">
+              <svg className="road-note-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 8v4m0 4h.01" />
+              </svg>
+              <p>
+                Pas sûr du format après le mois 1 ? On en parle lors de l&apos;appel gratuit. C&apos;est souvent là que ça se décide.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -319,12 +442,12 @@ export default function RestartPage() {
         <div className="reveal">
           <p className="s-ey">Prêt à sortir du cycle</p>
           <h2 className="cta-ti">Reprends.<br /><em>Sans peur.</em><br />Cette fois.</h2>
-          <p className="cta-sub">Un premier mois pour voir si le cadre te convient. Sans engagement. Sans promesse magique.</p>
+          <p className="cta-sub">Un premier mois pour poser le bilan, le diagnostic et le protocole. Ensuite, tu choisis : accompagné ou autonome.</p>
           <div className="cta-btns">
-            <a href="/checkout/restart" className="btn-inv">Commencer — 199€/mois</a>
+            <a href="/checkout/restart" className="btn-inv">Commencer le mois 1, 199€</a>
             <a href="https://calendly.com/traintorehab/traintorehab-thomas-mahe" className="btn-gw">Parler à Thomas d&apos;abord</a>
           </div>
-          <p className="cta-note">Résiliable à tout moment · Réponse sous 24h · Places limitées</p>
+          <p className="cta-note">Premier mois obligatoire · Puis accompagnement ou autonomie · Places limitées</p>
         </div>
       </section>
     </>

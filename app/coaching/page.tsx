@@ -21,16 +21,6 @@ export default function CoachingPage() {
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' })
     revealEls.forEach(el => revealObs.observe(el))
 
-    // Process steps cascade
-    const steps = document.querySelectorAll('.process-step')
-    const stepsObs = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        steps.forEach((el, i) => setTimeout(() => el.classList.add('visible'), i * 120))
-        stepsObs.disconnect()
-      }
-    }, { threshold: 0.15 })
-    if (steps[0]) stepsObs.observe(steps[0])
-
     // FAQ cascade
     const faqItems = document.querySelectorAll('.faq-item')
     const faqObs = new IntersectionObserver((entries) => {
@@ -228,67 +218,6 @@ export default function CoachingPage() {
           -webkit-text-stroke: 1.5px #070265;
           opacity: 0.45;
         }
-        /* PROCESS */
-        .process-section { background: #FEFEFE; padding: 96px 80px; }
-        .process-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-        .process-step {
-          display: flex;
-          gap: 24px;
-          padding: 28px 0;
-          border-bottom: 1px solid #E8E7E3;
-          opacity: 0;
-          transform: translateX(-20px);
-          transition: opacity 0.5s ease, transform 0.5s ease, padding-left 0.3s ease;
-        }
-        .process-step:last-child { border-bottom: none; }
-        .process-step.visible { opacity: 1; transform: translateX(0); }
-        .process-step.visible:hover { padding-left: 8px; }
-        .step-num {
-          font-family: var(--font-heading);
-          font-size: 42px;
-          color: #E8E7E3;
-          line-height: 1;
-          flex-shrink: 0;
-          width: 48px;
-          transition: color 0.3s;
-        }
-        .process-step:hover .step-num { color: #070265; }
-        .step-title { font-size: 16px; font-weight: 600; color: #070265; margin-bottom: 6px; }
-        .step-desc { font-size: 14px; font-weight: 300; color: #3D3C38; line-height: 1.6; }
-        .process-visual {
-          background: #F4F3F0;
-          border-radius: 12px;
-          padding: 40px;
-          position: sticky;
-          top: 88px;
-        }
-        .timeline { display: flex; flex-direction: column; position: relative; }
-        .timeline::before {
-          content: '';
-          position: absolute;
-          left: 20px;
-          top: 24px; bottom: 24px;
-          width: 1px;
-          background: #E8E7E3;
-        }
-        .timeline-item { display: flex; gap: 20px; align-items: flex-start; padding: 16px 0; }
-        .tl-dot {
-          width: 40px; height: 40px;
-          border-radius: 50%;
-          background: #FEFEFE;
-          border: 2px solid #E8E7E3;
-          display: flex; align-items: center; justify-content: center;
-          font-family: var(--font-heading);
-          font-size: 16px;
-          color: #070265;
-          flex-shrink: 0;
-          position: relative;
-          z-index: 1;
-        }
-        .tl-dot.active { background: #070265; border-color: #070265; color: #FEFEFE; }
-        .tl-label { font-size: 12px; font-weight: 500; color: #9B9A96; margin-bottom: 2px; }
-        .tl-text { font-size: 14px; color: #3D3C38; line-height: 1.5; }
-
         /* FAQ */
         .faq-section { background: #070265; padding: 96px 80px; }
         .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
@@ -395,61 +324,6 @@ export default function CoachingPage() {
         <p>
           L&apos;objectif ici est simple : t&apos;orienter vers le bon parcours. Si tu viens pour une douleur ou une reprise, commence par TrainToRestart. Si tu viens pour progresser, va vers TrainToPerform.
         </p>
-      </section>
-
-      {/* PROCESS */}
-      <section className="process-section">
-        <div className="process-layout">
-          <div>
-            <div className="reveal-left">
-              <p className="section-eyebrow">Comment ça se passe</p>
-              <h2 className="section-title">Le process,<br /><em>étape</em> par étape</h2>
-              <p style={{ fontSize: '16px', fontWeight: 300, color: '#3D3C38', lineHeight: 1.7, marginBottom: '40px' }}>
-                Pas de formulaire d&apos;inscription immédiate. On commence toujours par comprendre ta situation avant de te proposer quoi que ce soit.
-              </p>
-            </div>
-            <div>
-              {[
-                { num: '01', title: 'Appel de clarification — 15 min', desc: "On fait le point sur ta situation. Je t'oriente vers l'offre la plus adaptée, ou je te dis honnêtement que ce n'est pas le bon moment." },
-                { num: '02', title: 'Bilan initial structuré', desc: "Analyse de ton historique, tests ciblés (mobilité, force, tolérance à l'effort) et compréhension de ton contexte réel. Tu sais où tu en es." },
-                { num: '03', title: 'Plan personnalisé & évolutif', desc: "Un fil conducteur clair adapté à toi — pas à une pathologie. Chaque étape a un pourquoi. Le plan s'ajuste selon tes retours." },
-                { num: '04', title: 'Montée en autonomie', desc: "Tu apprends à lire les signaux de ton corps et à ajuster intelligemment. L'objectif : ne plus dépendre d'un accompagnement permanent." },
-              ].map((step) => (
-                <div key={step.num} className="process-step">
-                  <span className="step-num">{step.num}</span>
-                  <div>
-                    <h3 className="step-title">{step.title}</h3>
-                    <p className="step-desc">{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="reveal-right">
-            <div className="process-visual">
-              <p style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '0.14em', textTransform: 'uppercase', color: '#9B9A96', marginBottom: '28px' }}>
-                Exemple de parcours — 3 mois
-              </p>
-              <div className="timeline">
-                {[
-                  { n: '1', label: 'Semaine 1', text: "Appel + bilan structuré. Tu comprends ton point de départ.", active: true },
-                  { n: '2', label: 'Semaines 2–4', text: "Premiers blocs d'entraînement. Ajustements continus via WhatsApp.", active: true },
-                  { n: '3', label: 'Mois 2', text: "Progression structurée. Tu commences à piloter toi-même.", active: true },
-                  { n: '4', label: 'Mois 3', text: "Autonomie réelle. Tu sais quoi faire, pourquoi, et comment ajuster.", active: false },
-                ].map((item) => (
-                  <div key={item.n} className="timeline-item">
-                    <div className={`tl-dot${item.active ? ' active' : ''}`}>{item.n}</div>
-                    <div>
-                      <p className="tl-label">{item.label}</p>
-                      <p className="tl-text">{item.text}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* FAQ */}
